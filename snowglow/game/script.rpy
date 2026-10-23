@@ -7,6 +7,7 @@ define o = Character("Osric", color="#5d4d2f")
 define w = Character("Wynfled", color="#406197")
 default wynn_affec = 100
 default os_affec = 50
+default skip_ice = False
 
 
 label start:
@@ -18,19 +19,34 @@ label start:
     "You and your friends, Wynnfled and Osric, have been sent out for the monthly ice haul, marking the rare ocassion
     of being permitted to leave Seolforstan, your orphanage to carve ice in outer Ismere."
     "Your fingers burn and begin to stiffen as you pull your handmitts off."
+    define mc = Character("[name]")
+
+    python:
+        name = renpy.input("What is your name?", length=32, default="Maren Rime")
+        name = name.strip()
+
+        if not name:
+            name = "Maren Rime"
+
+        nickname = renpy.input("What nickname do you friends call you?", length=32, default="Mare")
+        nickname = nickname.strip()
+        if not nickname:
+            nickname = "Mare"
+
     show wynfled happy at right
-    w "Osriccc! Come get it!"
+    w "Osriccc! Come get it! [nickname], quit scowling!"
     "Wynfled waves Os's shovel around, giggling."
     show osric happy at left
     o "...Give it here."
     w "No, no, I've got it."
     "Your fingers start freezing as they continue joking around."
+    mc "Guys, I'm a bit cold..."
     show wynfled laughing at left 
     show osric laughing at right
-    w "Maren, catch! Oh nooo, where'd your shovel go, Os?"
+    w "Then put your mitts back on! Wait, no! Ahhhh! [nickname], catch! Oh nooo, where'd your shovel go, Os?"
     "You catch the shovel."
     menu:
-        "'Can you get back on task?'":
+        "'Can you quit fooling around now?'":
             jump annoyed
         "*Laugh along and put your handmitts back on*":
             jump fun
@@ -45,7 +61,8 @@ label annoyed:
     show osric normal at left
     w "Mare, what's gotten into you?"
     o "It's one of her moods again..."
-    show wynfled normal at right
+    mc "So you just hate working, huh?"
+    show wynfled normal 
     w "Well, at these times it's better to leave her alone anyways!"
     o "..."
     o "Wynn, she's right. Let's finish carving first."
@@ -55,9 +72,9 @@ label fun:
 
     $ wynn_affec += 1
     $ os_affec -= 3
-    show osric normal at right
+    show osric normal
     "Os glances at you briefly. He looks slightly annoyed."
-    show osric happy at right
+    show osric happy
     w "Hey, you guys wanna go explore 'round Ismere?"
     menu: 
         "Yes!":
@@ -67,7 +84,9 @@ label fun:
 
 
 label explore:
-    pass
+    
+    $ wynn_affec += 10
+    $ os_affec -= 10
 
 
 label carve_alone:
@@ -76,7 +95,7 @@ label carve_alone:
     show wynfled surprised at right
     show osric happy at left
     w "Oh! Mare's at it already!"
-    show osric surprised at left
+    show osric surprised 
     o "Yeah, let's get back to work. Mare, pass me my shovel, eh?"
     show wynfled laughing 
     w "Os! Not yet! You wanna go explore 'round Ismere?"
@@ -94,7 +113,7 @@ label carve_alone:
             jump continue_alone
 
 label work:
-    show wynfled normal
+    show wynfled sad
     w "How'd I get roped into this again?"
     show osric laughing
     o "We've got to finish our quota or we'll get in trouble."
@@ -107,12 +126,49 @@ label work:
     show wynfled sad
     w "But that's just terrible!"
     show osric happy
-    o "So put your head down and work, Wynn."
+    o "It's a punishment, Wynn. It's meant to set an example."
+    o "So let's just focus on not becoming them and work hard."
     show wynfled surprised
     show osric surprised
-    "You take out the reducing agent and step back. You all watch as the ice falls away in a perfect circle."
-
-
-
+    "You sprinkle the reducing agent on the red powder and step back. You all watch as the ice falls away in a perfect circle."
+    mc "Yes!! We did it!"
+    show wynfled happy
+    show osric happy
+    "You all do a group hi-five. You almost melt into your glove as you put it back on."
+    w "Aaaaa!!! I can finally feel my fingers again!"
+    w "But y'know, I kinda wanna stay out here just a little longer... can we go explore?"
+    show osric normal
+    "Osric doesn't respond, but looks at you cryptically."
+    default ask_osric_count = 0
+    jump decide_ice
+    
 label continue_alone:
-    pass
+    "Osric and Wynn leave without you, and now you're left alone."
+
+
+label ask_osric:
+    show osric angry
+    "Osric looks angry."
+    if ask_osric_count < 5:
+        $ os_affec -= 2
+        o "You decide."
+        jump decide_ice
+    else:
+        o "You're really indecisive, huh? Let's just head back then, or we'll be here all day."
+        show wynfled surprised
+        w "Os, that's not like you!"
+        show osric normal 
+        o "Guess it's been a long day."
+        "Wynfled looks hesitant, but nods."
+        jump back_at_camp
+
+label decide_ice:
+    show osric normal
+    menu:
+        "I don't think so. We need energy to haul the ice back.":
+            jump back_at_camp
+        "Fine, we can stay a bit. We've collected enough ice anyways.":
+            jump explore
+        "Osric? What do you think?":
+            $ ask_osric_count += 1
+            jump ask_osric
