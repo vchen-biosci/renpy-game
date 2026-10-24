@@ -99,6 +99,40 @@ label branch_1_1:
         "The punishment doesn't sound so bad after all...":
             jump branch_2
 
+label branch_1_2:
+    show wynfled thinking
+    show osric normal
+    "Collection time is soon, and you can all feel it."
+    "Wynn's gaze is clearer and she's making less jokes now."
+    "None of you speak, but you nod at each other instead to communicate."
+    "The shape is hammered in the ice, and Os spreads the reagents more carefully this time."
+    "You all nod at each other."
+    "BAM!"
+    show wynfled happy
+    show osric happy
+    "The ice comes free."
+    w "woo... WOAHHH!!!"
+    o "..."
+    mc "YES! Ugh, my hands are freezing."
+    "You all put your mitts on."
+    show wynfled laughing
+    w "I know, right? Ahhhh, it feels like they're melting."
+    o "Should we push for another one?"
+    show wynfled angry
+    w "I say no!"
+    show osric happy
+    show wynfled normal
+    o "What do you say, [nickname]?"
+    w "Come onnnn, let's just rest a bit, eh?"
+    show wynfled sad
+    w "I really think I'm about to get frostbite."
+    menu:
+        "I say we rest 'till Nightcumb comes!":
+            jump branch_1_3_1
+        "We're on a roll, let's do another one!":
+            jump branch 1_3
+
+
 label branch_2:
     pass
 
