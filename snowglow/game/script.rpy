@@ -133,8 +133,10 @@ label branch_1_2:
             jump branch_1_3
 
 label branch_1_3:
+    show osric sad
     "Wynn sniffs and casts you a sad glance, but doesn't resist."
     "You all know that it's for the better."
+    show osric normal
     menu: 
         "Sorry, Wynn.":
             $ wynn_affec += 5
@@ -147,18 +149,70 @@ label branch_1_3:
             o "Wynn's the one being strong and pushing through."
             "Your bond with Os seems to have grown stronger."
     show wynfled happy
+    show osric surprised
     w "Hey, let's all switch places. My legs are dyinggg!"
     show wynfled happy at left
     show osric happy at right
     o "Good idea. [nickname], it looks like we can do this one without Wynn."
+    show osric normal 
     o "Should we let her rest?"
     menu:
         "I think we need her for this one.":
-            pass
+            o "Fair enough."
+            $ wynn_affec += 1
+            "Wynn seems to appreciate your self-confidence."
+            jump branch_1_3_2
         "Yeah, she should rest.":
-            pass
+            $ os_affec += 2
+            "Os seems to appreciate your gesture."
+            jump branch_1_3_1
+
+label branch_1_3_1:
+    show wynfled sad
+    w "I feel really bad to sit out like this..."
+    mc "Your safety comes first, Wynn."
+    show wynfled happy
+    w "I really appreciate you guys."
+    show osric happy
+    o "Ok, [nickname] - can you try leaning over and pouring both sides at once?"
+    menu:
+        "Then it won't be evenly spread.":
+            jump branch_1_3_1_1
+        "Got it!":
+            jump branch_1_3_1_2
     
 
+
+label branch_1_3_1_2:
+    "You lean over, trying to focus."
+    "You accidentally tip out far too much reactant."
+    "Out of the corner of your eye, you see Os drawing back the blast trigger of his pipe."
+    "It's too late. You can feel it."
+    mc "Wait! Os! Don't - !"
+
+label branch_1_3_2:
+    show wynfled sad
+    "Wynn bites her lip as she takes her glove back off."
+    mc "Wynn, hang in there!"
+    show wynfled happy 
+    w "O-oh, don't worry about me!!!"
+    o "You sure we need her for this?"
+    show wynfled laughing
+    w "Really, I was just joking earlier."
+    menu:
+        "Wynn, you know what? Take a break. We can tell you're hurting.":
+            $ os_affec += 2
+            $ wynn_affec -= 1
+            "Os seems to appreciate your considerosity, while Wynn seems to feel patronised."
+            jump branch_1_3_1
+        "*gloss over Os's question*":
+            $ os_affec -= 20
+            $ wynn_affec += 5
+            "Os looks incredibly angry at your inconsideration, while Wynn seems to slightly appreciate your diminishing of the ordeal."
+    mc "5 more minutes, 5 more minutes."
+    w "..."
+    o "..."
+    "Both your companions seem uncomfortable. The atmosphere is tense, after all."
 
 label branch_2:
     pass
