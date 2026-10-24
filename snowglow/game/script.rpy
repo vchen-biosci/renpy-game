@@ -13,10 +13,7 @@ define gui.text_font = "GlacialIndifference-Regular.otf"
 define gui.text_instance = "light"
 define gui.text_axis = {"width" : 125}
 define gui.text_size = 35
-
-#define audio.over_the_rise = 
-
-
+ 
 
 label start:
 
@@ -63,7 +60,7 @@ label branch_1:
         "They're never coming back. Don't you get it?":
             pass
         "Hey, I'm sure you're overthinking it...":
-            jump connecting_branch_1
+            jump con_branch_1
     show wynfled sad
     w "But that's just terrible!"
     show osric happy
@@ -74,9 +71,38 @@ label branch_1:
     jump branch_1_1
 
 label branch_1_1:
+    "The cold bites at your bare fingers, but none of you complain."
+    "The faster you get this part done, the more likely you are to keep your digits."
+    show wynfled thinking
+    w "Os, some of that reducing agent please."
+    show wynfled normal
+    show osric happy
+    o "Yes, one sec... you got the powder, [nickname]?"
+    mc "Yes. Wynn?"
+    show wynfled happy
+    w "Here."
+    "You hammer your rod-needle into the ice in the general shape of a circle."
+    show wynfled thinking
+    show osric normal
+    "Meanwhile, Wynn and Os place the reducing agent and powder on opposite sides."
+    show osric happy
+    "You all nod at each other."
+    show wynfled normal
+    w "Kaboom!"
+    "She uses her draw-pipe to blast the two substances at each other at high pressure."
+    show wynfled sad
+    show osric sad
+    mc "Well... that was something."
+    menu:
+        "Come on, let's try again.":
+            jump branch_1_2
+        "The punishment doesn't sound so bad after all...":
+            jump branch_2
+
+label branch_2:
     pass
 
-label connecting_branch_1:
+label con_branch_1:
     w "Ugh, you're right. Os, how bad can the punishment actually be?"
     show osric surprised
     o "..."
