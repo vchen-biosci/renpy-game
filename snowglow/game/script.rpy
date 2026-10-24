@@ -5,37 +5,48 @@
 
 define o = Character("Osric", color="#af8a45")
 define w = Character("Wynfled", color="#4179d4")
+define n = Character("Nightcumb", color="#df28cd")
 default wynn_affec = 100
 default os_affec = 50
 default skip_ice = False
-style my_text is text:
-    size 40
-    font "evelyne.regular.otf"
+define gui.text_font = "GlacialIndifference-Regular.otf"
+define gui.text_instance = "light"
+define gui.text_axis = {"width" : 125}
+define gui.text_size = 35
+
+#define audio.over_the_rise = 
+
 
 
 label start:
 
-    scene bg room with dissolve
-    show wynfled normal at right
-    show osric normal at left
-
-    "You and your friends, Wynnfled and Osric, have been sent out for the monthly ice haul, marking the rare ocassion
-    of being permitted to leave Seolforstan, your orphanage to carve ice in outer Ismere."
-    "Your fingers burn and begin to stiffen as you pull your handmitts off."
+    play music over_the_rise loop volume 0.75
+    show mining site with dissolve
+    with None
+    "Before we begin, let's learn a bit more about you."
     define mc = Character("[name]")
 
     python:
-        name = renpy.input("What is your name?", length=32, default="Maren Rime")
+        name = renpy.input("What's your name?", length=32, default="Maren Rime")
         name = name.strip()
 
         if not name:
             name = "Maren Rime"
 
-        nickname = renpy.input("What nickname do you friends call you?", length=32, default="Mare")
+        nickname = renpy.input("What nickname do you like to be called?", length=32, default="Mare")
         nickname = nickname.strip()
         if not nickname:
             nickname = "Mare"
 
+    show wynfled normal at right
+    "This is Wynn (Wynfled). She's your best friend."
+    hide wynfled
+    show osric normal at left
+    "This is Os (Osric). He's your other team-member for ice expeditions."
+    show wynfled normal at right
+    "You've just finished hiking through the snowy tundra to reach outer Ismere (the ice-capped water body behind you)."
+    "The quarterly ice haul is the only time you're ever permitted to leave Seolforstan, your orphanage."
+    "Your fingers burn and begin to stiffen as you pull your handmitts off."
     show wynfled happy at right
     w "Osriccc! Come get it! [nickname], quit scowling!"
     "Wynfled waves Os's shovel around, giggling."
@@ -48,70 +59,16 @@ label start:
     show osric laughing at right
     w "Then put your mitts back on! Wait, no! Ahhhh! [nickname], catch! Oh nooo, where'd your shovel go, Os?"
     "You catch the shovel."
-    menu:
-        "'Can you quit fooling around now?'":
-            jump annoyed
-        "*Laugh along and put your handmitts back on*":
-            jump fun
-        "Start carving the ice before your fingers freeze off":
-            jump carve_alone
-
-label annoyed:
-
-    $ wynn_affec -= 1
-    $ os_affec += 5
-    show wynfled thinking at right
-    show osric normal at left
-    w "[nickname], what's gotten into you?"
-    o "It's one of her moods again..."
-    mc "So you just hate working, huh?"
-    show wynfled normal 
-    w "Well, at these times it's better to leave her alone anyways!"
-    o "..."
-    o "Wynn, she's right. Let's finish carving first."
-    jump work
-
-label fun:
-
-    $ wynn_affec += 1
-    $ os_affec -= 3
-    show osric normal
-    "Os glances at you briefly. He looks slightly annoyed."
-    show osric happy
-    w "Hey, you guys wanna go explore 'round Ismere?"
-    menu: 
-        "Yes!":
-            jump explore
-        "Hey, actually, let's finish carving the ice first.":
-            jump annoyed
-
-
-label explore:
-    
-    "The three of you mark the ice locus with a makeshift flag and set off to look around the landscape."
-
-label carve_alone:
     "Wynn and Os continue to mess around as you twist open the powder capsule. You use your pin to gently tip the melting reagent around the target region."
-    "You adjust your holster, blowing at your fingers to keep them warm"
+    "You adjust your holster, blowing at your fingers to keep them warm."
     show wynfled surprised at right
     show osric happy at left
     w "Oh! [nickname]'s at it already!"
     show osric surprised 
     o "Yeah, let's get back to work. [nickname], pass me my shovel, eh?"
     show wynfled laughing 
-    w "Os! Not yet! You wanna go explore 'round Ismere?"
-    show osric sad
-    o "But [nickname]'ll be alone…"
-    "Os looks at you, confused."
-    show wynfled thinking
-    w "You're right. Mare, do you want to come with?"
-    menu:
-        "'We genuinely need to work. Come on, guys.'":
-            jump annoyed
-        "'Yeah, I'll come.'":
-            jump explore
-        "'Look up and shake your head'":
-            jump continue_alone
+    jump work
+    
 
 label work:
     show wynfled sad
@@ -122,54 +79,55 @@ label work:
     w "Come to think of it, I haven't seen Heda and Wren since they left to Eolyusion."
     show osric normal
     menu:
-        "I don't think they're meant to come back, you know.":
+        "I think they're not meant to come back.":
             pass
     show wynfled sad
     w "But that's just terrible!"
     show osric happy
-    o "It's a punishment, Wynn. It's meant to set an example."
-    o "So let's just focus on not becoming them and work hard."
+    o "It's a punishment, Wynn. It's meant to set an example for all of us."
+    o "So let's follow suit and work hard."
     show wynfled surprised
     show osric surprised
     "You sprinkle the reducing agent on the red powder and step back. You all watch as the ice falls away in a perfect circle."
-    mc "Yes!! We did it!"
+    mc "...Isn't this the luckiest we've ever been?"
     show wynfled happy
     show osric happy
     "You all do a group hi-five. You almost melt into your glove as you put it back on."
     w "Aaaaa!!! I can finally feel my fingers again!"
-    w "But y'know, I kinda wanna stay out here just a little longer... can we go explore?"
+    w "But y'know, I kinda wanna stay out here just a little longer... Can we go explore?"
     show osric normal
     "Osric doesn't respond, but looks at you cryptically."
-    default ask_osric_count = 0
-    jump decide_ice
-    
-label continue_alone:
-    "Osric and Wynn leave without you, and now you're left alone."
-
-
-label ask_osric:
-    show osric angry
-    "Osric looks angry."
-    if ask_osric_count < 5:
-        $ os_affec -= 2
-        o "You decide."
-        jump decide_ice
-    else:
-        o "You're really indecisive, huh? Let's just head back then, or we'll be here all day."
-        show wynfled surprised
-        w "Os, that's not like you!"
-        show osric normal 
-        o "Guess it's been a long day."
-        "Wynfled looks hesitant, but nods."
-        jump back_at_camp
-
-label decide_ice:
-    show osric normal
     menu:
-        "I don't think so. We need energy to haul the ice back.":
-            jump back_at_camp
-        "Fine, we can stay a bit. We've collected enough ice anyways.":
-            jump explore
-        "Osric? What do you think?":
-            $ ask_osric_count += 1
-            jump ask_osric
+        "I don't think so. We need energy to haul the ice back. And we're not done yet.":
+            pass
+    o "That's right. I'm sure Nightcumb's coming for us soon."
+    show wynfled scared
+    "Wynn shivers. You giggle."
+    show wynfled angry
+    w "Hey! What's so funny?"
+    mc "Nothing..."
+    show wynfled normal
+    "You all set to work lifting and hauling the ice."
+    "It's taxing work, and by the end you're all glad you chose not to explore the tundra further."
+    w "Just for the record, I'm not scared of-"
+    show wynfled scared
+    show nightcumb normal
+    w "AAAAAAAA!!!!!"
+    n "Hello, children."
+    "He glances inscrutably at the ice pile."
+    n "You did well to survive. Group 5 had some casualties this time around."
+    show wynfled angry
+    show osric angry
+    n "Anyho! You can take this back to camp now!"
+    menu:
+        "...Understood.":
+            pass
+        "Think we could borrow any of that gear you have there?":
+            pass
+    n "See you!"
+    hide nightcumb
+    w "Tch."
+    mc "If it helps, I find him disconcerting too."
+    o "I just don't get why he can't show his marktag."
+    show wynfled sad
+    w "Right? He keeps it all tucked up behind his stupid purple hair."
