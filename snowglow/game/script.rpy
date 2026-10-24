@@ -17,7 +17,7 @@ define gui.text_size = 35
 
 label start:#MC mining ice with team
 
-    play music over_the_rise loop volume 0.75
+    play music [over_the_rise, ismere_theme] fadeout 1.0 fadein 1.0 loop volume 0.75
     show mining site with dissolve
     with None
     "Before we begin, let's learn a bit more about you."
@@ -110,7 +110,7 @@ label branch_1_2:
     "The deadline is very soon, and you can all feel it."
     "Wynn's gaze is clearer and she's making less jokes now."
     "There are no words between you. You don't need them, having learnt to extract your whole lives."
-    "The shape is hammered in the ice, and Os spreads the reagents more carefully this time."
+    "You hammer a circle into the ice, and Os spreads the reagents more carefully this time."
     "You all nod at each other."
     "BAM!"
     show wynfled happy
@@ -202,7 +202,7 @@ label branch_1_3_1_1:
     "Out of the the corner of your eye, you spot Wynn walking away secretively."
     menu:
         "Where are you going, Wynn?":
-            pass
+            jump branch_1_3_1_3
         "*She must have her reasons for sneaking away, she knows what she's doing*":
             $ wynn_affec += 3
     mc "Nah, it's all thanks to our hard work, definitely!"
@@ -221,8 +221,8 @@ label branch_1_3_1_1:
 
 
 label branch_1_3_1_3:
-    show wynfled surprised
-    show osric surprised
+    show wynfled surprised at right
+    show osric surprised at left
     "Wynn turns around."
     o "Where were you going?"
     show wynfled sad
@@ -235,6 +235,43 @@ label branch_1_3_1_3:
     $ wynn_affec -= 10
     $ os_affec -= 5
     w "And if I got lost? Then? Huh?"
+    "Osric looks hurt."
+    show osric sad
+    o "Then we'd be worried for the friend that means so much to us."
+    show wynfled sad
+    w "I..."
+    mc "We're in this together, Wynn."
+    show wynfled happy
+    w "Thanks, guys."
+    menu:
+        "*Press her on where she was going*":
+            jump branch_1_3_1_3_1
+        "*Focus on making Wynn feel happy and seen*":
+            show wynfled laughing
+            $ wynn_affec += 5
+            "Wynn looks happy. You feel your bond growing slightly stronger."
+            jump branch_1_3_1_4
+
+label branch_1_3_1_4:
+    #change the scene to show night-time at the glacier
+    show osric happy at right
+    show wynfled laughing at right
+    "Wynn sits and cuddles her knees while watching you and Os work."
+    o "[nickname], can you lift the ice just a bit higher so I can get underneath?"
+    "You oblige."
+    "He chips at it slowly and carefully."
+    "After a while, you've finished lifting it."
+    w "That one took a while."
+    mc "I'd say we've worked quite hard today. What say you?"
+    "You all stare at the heap of ice you've collected."
+    show osric laughing
+    o "That's enough Elnaxan to keep Seolforstan fed for months!"
+    show wynfled thinking
+    w "But what happens once we completely run out of Elnaxan near the orphanage?"
+    mc "I guess we'd have to come out to wider Ismere more often, no?"
+
+
+
 
 
 label branch_1_3_1_2:
@@ -402,9 +439,6 @@ label branch_3_2_2:
         ""
 
     
-
-label branch_3_2_2:
-    pass
 
 label con_branch_1_to_2:
     w "Ugh, you're right. Os, how bad can the punishment actually be?"
