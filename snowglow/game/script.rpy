@@ -167,12 +167,14 @@ label branch_1_3:
             "Os seems to appreciate your gesture."
             jump branch_1_3_1
 
+
 label branch_1_3_1:
     show wynfled sad
     w "I feel really bad to sit out like this..."
     mc "Your safety comes first, Wynn."
     show wynfled happy
     w "I really appreciate you guys."
+    hide wynfled
     show osric happy
     o "Ok, [nickname] - can you try leaning over and pouring both sides at once?"
     menu:
@@ -181,7 +183,30 @@ label branch_1_3_1:
         "Got it!":
             jump branch_1_3_1_2
     
+label branch_1_3_1_1:
+    show osric laughing at center
+    o "Good point!"
+    mc "Ok, just one more small tip, like this..."
+    o "It's good we're avoiding punishment today, honestly."
+    mc "Right? I'm all for adventure, but unnecessary disobedience is just bad for us."
+    show osric happy 
+    o "We got pretty lucky with the ice."
+    "Out of the the corner of your eye, you spot Wynn walking away secretively."
+    menu:
+        "Where are you going, Wynn?":
+            pass
+        "*She must have her reasons for sneaking away, she knows what she's doing*":
+            pass
+    mc "Nah, it's all thanks to our hard work, definitely!"
+    "You tip the red powder evenly and carefully."
+    mc "Wynn does have a point though. Seolforstan really is a prison, hm?"
+    show osric normal
+    o "What would the alternative be? Dying out in the cold?"
+    mc "I suppose. We're lucky, you're right."
+    "Os sighs."
+    o "I get what you mean. I've always wondered what's farther out there in the world."
 
+    
 
 label branch_1_3_1_2:
     "You lean over, trying to focus."
@@ -189,6 +214,7 @@ label branch_1_3_1_2:
     "Out of the corner of your eye, you see Os drawing back the blast trigger of his pipe."
     "It's too late. You can feel it."
     mc "Wait! Os! Don't - !"
+
 
 label branch_1_3_2:
     show wynfled sad
@@ -213,9 +239,20 @@ label branch_1_3_2:
     w "..."
     o "..."
     "Both your companions seem uncomfortable. The atmosphere is tense, after all."
+    menu:
+        "I'm sorry, guys. I'm really sorry. Let's let Wynn sit out.":
+            $ os_affec -= 10
+            "Os seems to lose more respect for your surface-level consideration."
+        "*Look at Wynn and grow concerned, then adamantly request she sit out*":
+            $ os_affec += 10
+            "Os seems to realise that you do have some humanity in you after all."
+
+    jump branch_1_3_1
+
 
 label branch_2:
     pass
+
 
 label con_branch_1:
     w "Ugh, you're right. Os, how bad can the punishment actually be?"
@@ -232,6 +269,6 @@ label con_branch_1:
     menu:
         "Let's take a break. What're they going to do, send us away?":
             jump branch_2
-        "Better to be safe there than dying out here. Let's get back to work.":
+        "Better to be safe there than perishing in the cold. Let's get back to work.":
             jump branch_1_1
     
