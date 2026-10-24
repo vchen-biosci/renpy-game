@@ -109,7 +109,7 @@ label branch_1_2:
     "You all nod at each other."
     "BAM!"
     show wynfled happy
-    show osric happy
+    show osric laughing
     "The ice comes free."
     w "woo... WOAHHH!!!"
     o "..."
@@ -129,8 +129,35 @@ label branch_1_2:
     menu:
         "I say we rest 'till Nightcumb comes!":
             jump branch_1_3_1
-        "We're on a roll, let's do another one!":
-            jump branch 1_3
+        "Wynn, one last push? We're on a roll!":
+            jump branch_1_3
+
+label branch_1_3:
+    "Wynn sniffs and casts you a sad glance, but doesn't resist."
+    "You all know that it's for the better."
+    menu: 
+        "Sorry, Wynn.":
+            $ wynn_affec += 5
+            show wynfled laughing
+            w "I was just joking, but awwww!"
+            "Your bond with Wynn seems to have grown stronger."
+        "Good idea, Os!":
+            $ os_affec += 5
+            show osric laughing
+            o "Wynn's the one being strong and pushing through."
+            "Your bond with Os seems to have grown stronger."
+    show wynfled happy
+    w "Hey, let's all switch places. My legs are dyinggg!"
+    show wynfled happy at left
+    show osric happy at right
+    o "Good idea. [nickname], it looks like we can do this one without Wynn."
+    o "Should we let her rest?"
+    menu:
+        "I think we need her for this one.":
+            pass
+        "Yeah, she should rest.":
+            pass
+    
 
 
 label branch_2:
