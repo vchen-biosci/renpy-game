@@ -39,12 +39,12 @@ label start:
     "This is Wynn (Wynfled). She's your best friend."
     hide wynfled
     show osric normal at left
-    "This is Os (Osric). He's your other team-member for ice expeditions."
+    "This is Os (Osric). He's your other team-member for the Elnaxanthine expedition."
     show wynfled sad at right
     w "I'm... so tired."
     "You look down at the shoddy pile of ice you've gathered."
     menu: 
-        "We're still short on ice.":
+        "We're still short on elxanth.":
             jump branch_1
         "...let's take a break.":
             jump branch_2
@@ -204,7 +204,12 @@ label branch_1_3_1_1:
     o "What would the alternative be? Dying out in the cold?"
     mc "I suppose. We're lucky, you're right."
     "Os sighs."
+    show osric happy
     o "I get what you mean. I've always wondered what's farther out there in the world."
+    mc "At least we get get the chance to contribute to society like this."
+    o "Once a month..."
+    show osric laughing
+    "You laugh together."
 
     
 
