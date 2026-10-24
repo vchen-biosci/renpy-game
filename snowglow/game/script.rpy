@@ -3,11 +3,14 @@
 # Declare characters used by this game. The color argument colorizes the
 # name of the character.
 
-define o = Character("Osric", color="#5d4d2f")
-define w = Character("Wynfled", color="#406197")
+define o = Character("Osric", color="#af8a45")
+define w = Character("Wynfled", color="#4179d4")
 default wynn_affec = 100
 default os_affec = 50
 default skip_ice = False
+style my_text is text:
+    size 40
+    font "evelyne.regular.otf"
 
 
 label start:
@@ -59,7 +62,7 @@ label annoyed:
     $ os_affec += 5
     show wynfled thinking at right
     show osric normal at left
-    w "Mare, what's gotten into you?"
+    w "[nickname], what's gotten into you?"
     o "It's one of her moods again..."
     mc "So you just hate working, huh?"
     show wynfled normal 
@@ -85,22 +88,20 @@ label fun:
 
 label explore:
     
-    $ wynn_affec += 10
-    $ os_affec -= 10
-
+    "The three of you mark the ice locus with a makeshift flag and set off to look around the landscape."
 
 label carve_alone:
     "Wynn and Os continue to mess around as you twist open the powder capsule. You use your pin to gently tip the melting reagent around the target region."
     "You adjust your holster, blowing at your fingers to keep them warm"
     show wynfled surprised at right
     show osric happy at left
-    w "Oh! Mare's at it already!"
+    w "Oh! [nickname]'s at it already!"
     show osric surprised 
-    o "Yeah, let's get back to work. Mare, pass me my shovel, eh?"
+    o "Yeah, let's get back to work. [nickname], pass me my shovel, eh?"
     show wynfled laughing 
     w "Os! Not yet! You wanna go explore 'round Ismere?"
     show osric sad
-    o "But Mare'll be alone…"
+    o "But [nickname]'ll be alone…"
     "Os looks at you, confused."
     show wynfled thinking
     w "You're right. Mare, do you want to come with?"
