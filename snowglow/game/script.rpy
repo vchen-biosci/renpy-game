@@ -4,8 +4,8 @@
 # name of the character.
 
 define o = Character("Osric", color="#af8a45")
-define w = Character("Wynfled", color="#4179d4")
-define n = Character("Nightcumb", color="#df28cd")
+define w = Character("Wynfled", color="#0464ff")
+define n = Character("Nightcumb", color="#ff19e8")
 default wynn_affec = 100
 default os_affec = 50
 default skip_ice = False
@@ -47,12 +47,12 @@ label start:#MC mining ice with team
     "You might as well give up at this rate."
     menu: 
         "We're still short on Elnaxan. Let's keep mining.":
-            jump branch_1
+            jump keep_mining
         "...let's take a break.":
-            jump branch_2
+            jump take_rest
 
 
-label branch_1:
+label keep_mining:
     w "How'd I get roped into this again?"
     show osric laughing
     o "We've got to meet the quota, Wynn. We signed up for this, remember?"
@@ -65,16 +65,16 @@ label branch_1:
         "They're never coming back. Don't you get it? It's permanent.":
             pass
         "Hey, I'm sure you're overthinking it...":
-            jump con_branch_1
+            jump discuss_punishment
     show wynfled sad
     w "But that's just terrible!"
     show osric happy
     o "It's a punishment, Wynn. It's meant to set an example for all of us."
     o "So let's follow suit and work hard, ok?"
-    jump branch_1_1
+    jump failed_mining
 
 
-label branch_1_1:
+label failed_mining:
     "The cold bites at your bare fingers, but none of you complain."
     "The faster you get this part done, the better."
     show wynfled thinking
@@ -99,12 +99,12 @@ label branch_1_1:
     mc "Well... that was something."
     menu:
         "Come on, let's try again.":
-            jump branch_1_2
+            jump first_dig
         "The punishment doesn't sound so bad after all...":
-            jump branch_2
+            jump take_rest
 
 
-label branch_1_2:
+label first_dig:
     show wynfled thinking
     show osric normal
     "The deadline is very soon, and you can all feel it."
@@ -133,12 +133,12 @@ label branch_1_2:
     w "I really think I'm about to get frostbite."
     menu:
         "I say we rest 'till Nightcumb comes!":
-            jump branch_3
+            jump work_or_play
         "Wynn, one last push? We're on a roll!":
-            jump branch_1_3
+            jump plea_for_rest
 
 
-label branch_1_3:
+label plea_for_rest:
     show osric sad
     "Wynn sniffs and casts you a sad glance, but doesn't resist."
     "You all know that it's for the better."
@@ -167,15 +167,15 @@ label branch_1_3:
             o "Fair enough."
             $ wynn_affec += 1
             "Wynn seems to appreciate your self-confidence."
-            jump branch_1_3_2
+            jump wynn_pain
         "Yeah, she should rest.":
             $ os_affec += 2
             show osric happy
             "Os seems to appreciate your gesture."
-            jump branch_1_3_1
+            jump branch_dig_with_os
 
 
-label branch_1_3_1:
+label branch_dig_with_os:
     show wynfled sad
     show osric happy
     w "I feel really bad to sit out like this..."
@@ -186,12 +186,12 @@ label branch_1_3_1:
     o "Ok, [nickname] - can you try leaning over and pouring both sides at once?"
     menu:
         "Then it won't be evenly spread.":
-            jump branch_1_3_1_1
+            jump chat_with_os
         "Got it!":
-            jump branch_1_3_1_2
+            jump explosion
     
 
-label branch_1_3_1_1:
+label chat_with_os:
     show osric laughing at center
     o "Good point!"
     mc "Ok, just one more small tip, like this..."
@@ -202,7 +202,7 @@ label branch_1_3_1_1:
     "Out of the the corner of your eye, you spot Wynn walking away secretively."
     menu:
         "Where are you going, Wynn?":
-            jump branch_1_3_1_3
+            jump confront_wynn
         "*She must have her reasons for sneaking away, she knows what she's doing*":
             $ wynn_affec += 3
     mc "Nah, it's all thanks to our hard work, definitely!"
@@ -220,7 +220,7 @@ label branch_1_3_1_1:
     "You laugh together."
 
 
-label branch_1_3_1_3:
+label confront_wynn:
     show wynfled surprised at right
     show osric surprised at left
     "Wynn turns around."
@@ -245,14 +245,14 @@ label branch_1_3_1_3:
     w "Thanks, guys."
     menu:
         "*Press her on where she was going*":
-            jump branch_1_3_1_3_1
+            jump confront_wynn_1
         "*Focus on making Wynn feel happy and seen*":
             show wynfled laughing
             $ wynn_affec += 5
             "Wynn looks happy. You feel your bond growing slightly stronger."
-            jump branch_1_3_1_4
+            jump elnaxian_sus
 
-label branch_1_3_1_4:
+label elnaxian_sus:
     #change the scene to show night-time at the glacier
     show osric happy at right
     show wynfled laughing at right
@@ -274,7 +274,7 @@ label branch_1_3_1_4:
 
 
 
-label branch_1_3_1_2:
+label explosion:
     "You lean over, trying to focus."
     "{color=#f00}You accidentally tip out far too much reactant.{/color}"
     "{color=#f00}Out of the corner of your eye, you see Os drawing back the blast trigger of his pipe.{/color}"
@@ -282,7 +282,7 @@ label branch_1_3_1_2:
     mc "{color=#f00}Wait! Os! Don't - !{/color}"
 
 
-label branch_1_3_2:
+label wynn_pain:
     show wynfled sad
     "Wynn bites her lip as she takes her glove back off."
     mc "Wynn, hang in there!"
@@ -297,7 +297,7 @@ label branch_1_3_2:
             $ os_affec += 2
             $ wynn_affec -= 1
             "Os seems to appreciate your considerosity, while Wynn seems to feel patronised."
-            jump branch_1_3_1
+            jump branch_dig_with_os
         "*gloss over Os's question*":
             show osric angry
             $ os_affec -= 20
@@ -315,14 +315,14 @@ label branch_1_3_2:
             $ os_affec += 10
             "Os seems to realise that you do have some humanity in you after all."
 
-    jump branch_1_3_1
+    jump branch_dig_with_os
 
 
-label branch_2:
+label take_rest:
     #put a minigame here later to convince Wynn and Osric to stop mining
 
 
-label branch_3:
+label work_or_play:
     show wynfled happy at right
     w "Osriccc! Come get it! [nickname], quit scowling!"
     "Wynfled waves Os's shovel around, giggling."
@@ -343,12 +343,12 @@ label branch_3:
     "You really don't have enough ice to guarantee anything."
     menu:
         "Hey, we might not have met the Elnaxan quota yet.":
-            jump con_branch_3_to_3
+            jump undermine_punishment
         "*Say nothing and continue to rest*":
-            jump branch_3_1
+            jump wasted_day
 
 
-label branch_3_1:
+label wasted_day:
     show wynfled happy at left
     show osric laughing at right
     "You three did exactly what you said you'd do: mess around instead of mining ice."
@@ -373,10 +373,10 @@ label branch_3_1:
     mc "Q-quick, let's at least pile it up..."
     "Os grabs his shovel and begins hauling ice onto the wooden carrier."
     "You all work together, but you certainly haven't met the quota."
-    jump branch_3_2
+    jump regret
 
 
-label branch_3_2:
+label regret:
     #put scene change to darker sky/overlay a darker colour to show that its nighttme
     show wynfled normal
     w "It's tidy now, but..."
@@ -402,12 +402,13 @@ label branch_3_2:
     n "Well, I'll begin the process now."
     menu:
         "*Watch him measure the Elnaxan concentration*":
-            jump branch_3_2_1
+            jump quota_check
         "*Plot with the others on what to do next*":
             hide nightcumb
-            jump branch_3_2_2
+            jump plot_during_quota
 
-label branch_3_2_1:
+label quota_check:
+    show nightcumb normal
     "You watch Nightcumb procure his elnaxanthin detector kit. He scatters green powder all over the ice."
     "The powder fully coats the ice's surface."
     "But that can't possibly be a reliable method, can it?"
@@ -420,7 +421,7 @@ label branch_3_2_1:
     n "And make sure not to wander too far, alright?"
     hide nightcumb 
 
-label branch_3_2_2:
+label plot_during_quota:
     show wynfled thinking
     show osric normal
     "You stand up. Wynn and Os follow you to a nearby stone formation. You climb up together."
@@ -435,12 +436,12 @@ label branch_3_2_2:
             show wynfled normal
             w "Well, do you have a plan? I don't."
             o "Damn it. Fine, let's head back then."
-            jump branch_3_2_1
+            jump quota_check
         ""
 
     
 
-label con_branch_1_to_2:
+label discuss_punishment:
     w "Ugh, you're right. Os, how bad can the punishment actually be?"
     show osric surprised
     o "..."
@@ -454,12 +455,12 @@ label con_branch_1_to_2:
     "She's right. You're only ever allowed out under supervision."
     menu:
         "Let's take a break. What're they going to do, send us away?":
-            jump branch_2
+            jump take_rest
         "Better to be safe there than perishing in the cold. Let's get back to work.":
-            jump branch_1_1
+            jump failed_mining
     
 
-label con_branch_3_to_3:
+label undermine_punishment:
     show osric normal
     "Os glances down at the pile too."
     o "Right, we might not meet the quota."
@@ -490,15 +491,15 @@ label con_branch_3_to_3:
                     $ wynn_affec += 2
                     $ os_affec += 2
                     "Both Wynn and Osric seem grateful that you got them back on track."
-            jump branch_1_3
+            jump plea_for_rest
         "Os, loosen up! Even if we get exiled, it'll be the three of us, together, eh?":
             show osric angry
             show wynfled happy
             $ os_affec -= 3
             $ wynn_affec += 6
             "Wynn looks pleased that you value your friendship so much, while Os looks strangely bitter."
-            jump branch_3_1
+            jump wasted_day
         "Whatever, I'm tired. Let's just forget about Elnaxan for a while.":
             show wynfled laughing
             w "Well, not the tired part, but hear! Hear!"
-            jump branch_3_1
+            jump wasted_day

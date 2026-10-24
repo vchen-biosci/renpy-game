@@ -97,11 +97,12 @@ define gui.game_menu_background = "gui/game_menu.png"
 ## time.
 
 ## The height of the textbox containing dialogue.
+#######define gui.textbox_height = 278
 define gui.textbox_height = 278
 
 ## The placement of the textbox vertically on the screen. 0.0 is the top, 0.5 is
 ## center, and 1.0 is the bottom.
-define gui.textbox_yalign = 1.0
+define gui.textbox_yalign = 0.9
 
 
 ## The placement of the speaking character's name, relative to the textbox.
@@ -120,7 +121,7 @@ define gui.namebox_height = None
 
 ## The borders of the box containing the character's name, in left, top, right,
 ## bottom order.
-define gui.namebox_borders = Borders(5, 5, 5, 5)
+define gui.namebox_borders = Borders(5, 8, 5, 5)
 
 ## If True, the background of the namebox will be tiled, if False, the
 ## background of the namebox will be scaled.
@@ -439,7 +440,11 @@ init python:
         gui.button_text_size = 45
         gui.label_text_size = 51
 
-        ## Adjust the location of the textbox.
+        # ## Adjust the location of the textbox.
+        # gui.textbox_height = 360
+        # gui.name_xpos = 120
+        # gui.dialogue_xpos = 135
+        # gui.dialogue_width = 1650
         gui.textbox_height = 360
         gui.name_xpos = 120
         gui.dialogue_xpos = 135
