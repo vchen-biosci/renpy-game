@@ -43,8 +43,10 @@ label start:
     show wynfled sad at right
     w "I'm... so tired."
     "You look down at the shoddy pile of ice you've gathered."
+    "There's definitely not enough Elnaxanthine in there to meet the quota."
+    "You might as well give up at this rate."
     menu: 
-        "We're still short on elxanth.":
+        "We're still short on Elnaxan. Let's keep mining.":
             jump branch_1
         "...let's take a break.":
             jump branch_2
@@ -52,12 +54,14 @@ label start:
 label branch_1:
     w "How'd I get roped into this again?"
     show osric laughing
-    o "We've got to finish our quota, Wynn. We signed up for this, remember?"
+    o "We've got to meet the quota, Wynn. We signed up for this, remember?"
+    show wynfled angry
+    w "Well, the quota's STUPID."
     show wynfled thinking
-    w "Come to think of it, I haven't seen Heda and Wren since they left to Eolyusion."
+    w "Come to think of it, I haven't seen Heda and Wren since they were sent to Eolyusion."
     show osric normal
     menu:
-        "They're never coming back. Don't you get it?":
+        "They're never coming back. Don't you get it? It's permanent.":
             pass
         "Hey, I'm sure you're overthinking it...":
             jump con_branch_1
@@ -66,15 +70,13 @@ label branch_1:
     show osric happy
     o "It's a punishment, Wynn. It's meant to set an example for all of us."
     o "So let's follow suit and work hard."
-    show wynfled surprised
-    show osric surprised
     jump branch_1_1
 
 label branch_1_1:
     "The cold bites at your bare fingers, but none of you complain."
-    "The faster you get this part done, the more likely you are to keep your digits."
+    "The faster you get this part done, the better."
     show wynfled thinking
-    w "Os, some of that reducing agent please."
+    w "Os, some of the reducing agent please."
     show wynfled normal
     show osric happy
     o "Yes, one sec... you got the powder, [nickname]?"
@@ -102,21 +104,21 @@ label branch_1_1:
 label branch_1_2:
     show wynfled thinking
     show osric normal
-    "Collection time is soon, and you can all feel it."
+    "The deadline is very soon, and you can all feel it."
     "Wynn's gaze is clearer and she's making less jokes now."
-    "None of you speak, but you nod at each other instead to communicate."
+    "There are no words between you. You don't need them, having learnt to extract your whole lives."
     "The shape is hammered in the ice, and Os spreads the reagents more carefully this time."
     "You all nod at each other."
     "BAM!"
     show wynfled happy
     show osric laughing
-    "The ice comes free."
+    "The ice block makes a hissing sound and slides out of the cap."
     w "woo... WOAHHH!!!"
     o "..."
     mc "YES! Ugh, my hands are freezing."
     "You all put your mitts on."
     show wynfled laughing
-    w "I know, right? Ahhhh, it feels like they're melting."
+    w "I know, right? Ahhhh, it's so warmmm! It feels like I'm melting."
     o "Should we push for another one?"
     show wynfled angry
     w "I say no!"
@@ -128,7 +130,7 @@ label branch_1_2:
     w "I really think I'm about to get frostbite."
     menu:
         "I say we rest 'till Nightcumb comes!":
-            jump branch_1_3_1
+            jump branch_3
         "Wynn, one last push? We're on a roll!":
             jump branch_1_3
 
@@ -183,6 +185,7 @@ label branch_1_3_1:
         "Got it!":
             jump branch_1_3_1_2
     
+
 label branch_1_3_1_1:
     show osric laughing at center
     o "Good point!"
@@ -259,7 +262,62 @@ label branch_2:
     pass
 
 
-label con_branch_1:
+label branch_3:
+    show wynfled happy at right
+    w "Osriccc! Come get it! [nickname], quit scowling!"
+    "Wynfled waves Os's shovel around, giggling."
+    show osric happy at left
+    o "...Give it here."
+    w "No, no, I've got it."
+    mc "Should we really be playing around right now?"
+    show wynfled laughing at left
+    show osric laughing at right
+    w "Tch, go mine alone for all we care if you're that set on it!"
+    w "Wait, no! Ahhhh! [nickname], catch!" 
+    "You catch the shovel."
+    w "Oh nooo, where'd your shovel go, Os?"
+    show osric happy
+    o "You serious?"
+
+    "You grow slightly restless looking at the pile."
+    "You really don't have enough ice to guarantee anything."
+    menu:
+        "Hey, we might not have met the Elnaxan quota yet.":
+            jump con_branch_3_to_3
+        "*Say nothing and continue to rest*":
+            jump branch_3_1
+
+label branch_3_1:
+    show wynfled happy at left
+    show osric laughing at right
+    "You three did exactly what you said you'd do: mess around instead of mining ice."
+    "But now as the sky grows darker, you feel a growing sense of unease."
+    menu:
+        "Should we mine a bit more before Nightcumb comes?":
+            show wynfled normal
+            show osric happy
+            w "Fat chance of that now..."
+            o "We probably should have done more work."
+            "Os looks just as uneasy as you do."
+            show wynfled thinking
+            w "The pile DOES look a bit small..."
+            o "Well, all we can do is wait."
+            "You all decide to play again, distracting yourselves from the mild sense of impending doom."
+        "*Tuck the sense of unease away*":
+            "Yeah, that's right. You decide it's too late to do anything anyways."
+    "You mess around more until night falls over the glacier."
+    show wynfled scared 
+    show osric normal
+    w "Nightcumb's about to come, isn't he?"
+    mc "Q-quick, let's at least pile it up..."
+    "Os grabs his shovel and begins hauling ice onto the wooden carrier."
+    "You all work together, but you certainly haven't met the quota."
+    jump branch_3_2
+
+label branch_3_2:
+    pass
+
+label con_branch_1_to_2:
     w "Ugh, you're right. Os, how bad can the punishment actually be?"
     show osric surprised
     o "..."
@@ -277,3 +335,46 @@ label con_branch_1:
         "Better to be safe there than perishing in the cold. Let's get back to work.":
             jump branch_1_1
     
+label con_branch_3_to_3:
+    show osric normal
+    "Os glances down at the pile too."
+    o "Right, we might not meet the quota."
+    show wynfled happy
+    w "So what?? Heck, I want to get the punishment! Exploring wider Ismere sounds so cool!"
+    show osric happy
+    o "Exploring permanently?"
+    show wynfled laughing
+    w "Yeah, without anyone watching us. Doesn't that sound cool?"
+    menu:
+        "But nobody survives alone. Especially not outside of Seolforstan.":
+            show wynfled sad
+            w "But that would mean Heda and Wren..."
+            "You remain silent."
+            show osric normal
+            "Os shuffles his feet."
+            o "Yeah, let's get back to work."
+            show wynfled surprised
+            w "My hands are really going to shrivel up if I take my mitts off again!"
+            menu: 
+                "You were messing around with the shovel just fine earlier...":
+                    show wynfled sad
+                    $ wynn_affec -= 3
+                    "Wynn looks hurt, perhaps feeling unheard. You feel your bond drifting slightly."
+                "C'mon, one last push?":
+                    show wynfled laughing
+                    show osric laughing
+                    $ wynn_affec += 2
+                    $ os_affec += 2
+                    "Both Wynn and Osric seem grateful that you got them back on track."
+            jump branch_1_3
+        "Os, loosen up! Even if we get exiled, it'll be the three of us, together, eh?":
+            show osric angry
+            show wynfled happy
+            $ os_affec -= 3
+            $ wynn_affec += 6
+            "Wynn looks pleased that you value your friendship so much, while Os looks strangely bitter."
+            jump branch_3_1
+        "Whatever, I'm tired. Let's just forget about Elnaxan for a while.":
+            show wynfled laughing
+            w "Well, not the tired part, but hear! Hear!"
+            jump branch_3_1
