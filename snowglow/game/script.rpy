@@ -43,44 +43,27 @@ label start:
     hide wynfled
     show osric normal at left
     "This is Os (Osric). He's your other team-member for ice expeditions."
-    show wynfled normal at right
-    "You've just finished hiking through the snowy tundra to reach outer Ismere (the ice-capped water body behind you)."
-    "The quarterly ice haul is the only time you're ever permitted to leave Seolforstan, your orphanage."
-    "Your fingers burn and begin to stiffen as you pull your handmitts off."
-    show wynfled happy at right
-    w "Osriccc! Come get it! [nickname], quit scowling!"
-    "Wynfled waves Os's shovel around, giggling."
-    show osric happy at left
-    o "...Give it here."
-    w "No, no, I've got it."
-    "Your fingers start freezing as they continue joking around."
-    mc "Guys, I'm a bit cold..."
-    show wynfled laughing at left 
-    show osric laughing at right
-    w "Then put your mitts back on! Wait, no! Ahhhh! [nickname], catch! Oh nooo, where'd your shovel go, Os?"
-    "You catch the shovel."
-    "Wynn and Os continue to mess around as you twist open the powder capsule. You use your pin to gently tip the melting reagent around the target region."
-    "You adjust your holster, blowing at your fingers to keep them warm."
-    show wynfled surprised at right
-    show osric happy at left
-    w "Oh! [nickname]'s at it already!"
-    show osric surprised 
-    o "Yeah, let's get back to work. [nickname], pass me my shovel, eh?"
-    show wynfled laughing 
-    jump work
-    
+    show wynfled sad at right
+    w "I'm... so tired."
+    "You look down at the shoddy pile of ice you've gathered."
+    menu: 
+        "We're still short on ice.":
+            jump branch_1
+        "...let's take a break.":
+            jump branch_2
 
-label work:
-    show wynfled sad
+label branch_1:
     w "How'd I get roped into this again?"
     show osric laughing
-    o "We've got to finish our quota or we'll get in trouble."
+    o "We've got to finish our quota, Wynn. We signed up for this, remember?"
     show wynfled thinking
     w "Come to think of it, I haven't seen Heda and Wren since they left to Eolyusion."
     show osric normal
     menu:
-        "I think they're not meant to come back.":
+        "They're never coming back. Don't you get it?":
             pass
+        "Hey, I'm sure you're overthinking it...":
+            jump connecting_branch_1
     show wynfled sad
     w "But that's just terrible!"
     show osric happy
@@ -88,46 +71,26 @@ label work:
     o "So let's follow suit and work hard."
     show wynfled surprised
     show osric surprised
-    "You sprinkle the reducing agent on the red powder and step back. You all watch as the ice falls away in a perfect circle."
-    mc "...Isn't this the luckiest we've ever been?"
-    show wynfled happy
-    show osric happy
-    "You all do a group hi-five. You almost melt into your glove as you put it back on."
-    w "Aaaaa!!! I can finally feel my fingers again!"
-    w "But y'know, I kinda wanna stay out here just a little longer... Can we go explore?"
+    jump branch_1_1
+
+label branch_1_1:
+    pass
+
+label connecting_branch_1:
+    w "Ugh, you're right. Os, how bad can the punishment actually be?"
+    show osric surprised
+    o "..."
     show osric normal
-    "Osric doesn't respond, but looks at you cryptically."
+    o "Nobody's ever come back, that's for sure."
+    show wynfled happy
+    "You and Wynn share a smile."
+    w "Is getting to leave Seolforstan really that bad?"
+    o "What?"
+    w "Just saying, it's kinda like a prison..."
+    "She's right. You're only ever allowed out under supervision."
     menu:
-        "I don't think so. We need energy to haul the ice back. And we're not done yet.":
-            pass
-    o "That's right. I'm sure Nightcumb's coming for us soon."
-    show wynfled scared
-    "Wynn shivers. You giggle."
-    show wynfled angry
-    w "Hey! What's so funny?"
-    mc "Nothing..."
-    show wynfled normal
-    "You all set to work lifting and hauling the ice."
-    "It's taxing work, and by the end you're all glad you chose not to explore the tundra further."
-    w "Just for the record, I'm not scared of-"
-    show wynfled scared
-    show nightcumb normal
-    w "AAAAAAAA!!!!!"
-    n "Hello, children."
-    "He glances inscrutably at the ice pile."
-    n "You did well to survive. Group 5 had some casualties this time around."
-    show wynfled angry
-    show osric angry
-    n "Anyho! You can take this back to camp now!"
-    menu:
-        "...Understood.":
-            pass
-        "Think we could borrow any of that gear you have there?":
-            pass
-    n "See you!"
-    hide nightcumb
-    w "Tch."
-    mc "If it helps, I find him disconcerting too."
-    o "I just don't get why he can't show his marktag."
-    show wynfled sad
-    w "Right? He keeps it all tucked up behind his stupid purple hair."
+        "Let's take a break. What're they going to do, send us away?":
+            jump branch_2
+        "Better to be safe there than dying out here. Let's get back to work.":
+            jump branch_1_1
+    
