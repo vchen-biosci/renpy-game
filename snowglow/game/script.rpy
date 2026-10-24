@@ -70,7 +70,7 @@ label branch_1:
     w "But that's just terrible!"
     show osric happy
     o "It's a punishment, Wynn. It's meant to set an example for all of us."
-    o "So let's follow suit and work hard."
+    o "So let's follow suit and work hard, ok?"
     jump branch_1_1
 
 
@@ -85,7 +85,7 @@ label branch_1_1:
     mc "Yes. Wynn?"
     show wynfled happy
     w "Here."
-    "You hammer your rod-needle into the ice in the general shape of a circle."
+    "You hammer your rod-needle into the ice, creating a rough circle outline against the smooth surface."
     show wynfled thinking
     show osric normal
     "Meanwhile, Wynn and Os place the reducing agent and powder on opposite sides."
@@ -282,7 +282,7 @@ label branch_1_3_2:
 
 
 label branch_2:
-    pass
+    #put a minigame here later to convince Wynn and Osric to stop mining
 
 
 label branch_3:
@@ -340,8 +340,71 @@ label branch_3_1:
 
 
 label branch_3_2:
-    pass
+    #put scene change to darker sky/overlay a darker colour to show that its nighttme
+    show wynfled normal
+    w "It's tidy now, but..."
+    "All three of you are silent. In hindsight, maybe you shouldn't have messed around so much."
+    "Finally, Osric breaks the silence."
+    o "So tonight'll be our last night in Seolforstan, huh."
+    w "Don't say that. Maybe... maybe somehow..."
+    "Her words die down as she speaks."
+    w "...maybe there's just really... really concentrated Elnaxan in the ice."
+    mc "I wonder how they detect Elnaxan anyways?"
+    o "That's up to the scientists to do. We don't have the privilege of knowing."
+    show wynfled laughing
+    w "Hey, think we could bribe a scient-AAAAAAA!"
+    show nightcumb normal
+    show wynfled scared
+    w "He-hello, sir!" 
+    n "Hello, children."
+    "You all straighten your posture and avert your eyes as he walks over."
+    n "And this is what you've produced today?"
+    show osric sad
+    o "Yes, sir. We... we understand that we didn't meet the quota."
+    n "Ha! Ha! One can never be sure until one checks!"
+    n "Well, I'll begin the process now."
+    menu:
+        "*Watch him measure the Elnaxan concentration*":
+            jump branch_3_2_1
+        "*Plot with the others on what to do next*":
+            hide nightcumb
+            jump branch_3_2_2
 
+label branch_3_2_1:
+    "You watch Nightcumb procure his elnaxanthin detector kit. He scatters green powder all over the ice."
+    "The powder fully coats the ice's surface."
+    "But that can't possibly be a reliable method, can it?"
+    n "Hm. Dark green concentration."
+    "His eyebrows go up."
+    n "Kids, looks like you're very lucky! With this much ice you somehow managed to meet the quota."
+    show wynfled surprised
+    show osric surprised
+    n "Well then, I'll be off! Stay here and wait so that all groups head back together, alright?"
+    n "And make sure not to wander too far, alright?"
+    hide nightcumb 
+
+label branch_3_2_2:
+    show wynfled thinking
+    show osric normal
+    "You stand up. Wynn and Os follow you to a nearby stone formation. You climb up together."
+    w "So, [nickname]? You've been thinking for a while, haven't you?"
+    o "Do you really have a plan?"
+    menu:
+        "N-nevermind. I don't. Let's head back and pray for the best...":
+            $ wynn_affec -= 1
+            $ os_affec -= 1
+            "Both your companions seem mildly disappointed."
+            o "There's no way praying's going to work, [nickname]."
+            show wynfled normal
+            w "Well, do you have a plan? I don't."
+            o "Damn it. Fine, let's head back then."
+            jump branch_3_2_1
+        ""
+
+    
+
+label branch_3_2_2:
+    pass
 
 label con_branch_1_to_2:
     w "Ugh, you're right. Os, how bad can the punishment actually be?"
