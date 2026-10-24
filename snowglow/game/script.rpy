@@ -15,7 +15,7 @@ define gui.text_axis = {"width" : 125}
 define gui.text_size = 35
  
 
-label start:
+label start:#MC mining ice with team
 
     play music over_the_rise loop volume 0.75
     show mining site with dissolve
@@ -51,6 +51,7 @@ label start:
         "...let's take a break.":
             jump branch_2
 
+
 label branch_1:
     w "How'd I get roped into this again?"
     show osric laughing
@@ -71,6 +72,7 @@ label branch_1:
     o "It's a punishment, Wynn. It's meant to set an example for all of us."
     o "So let's follow suit and work hard."
     jump branch_1_1
+
 
 label branch_1_1:
     "The cold bites at your bare fingers, but none of you complain."
@@ -100,6 +102,7 @@ label branch_1_1:
             jump branch_1_2
         "The punishment doesn't sound so bad after all...":
             jump branch_2
+
 
 label branch_1_2:
     show wynfled thinking
@@ -134,6 +137,7 @@ label branch_1_2:
         "Wynn, one last push? We're on a roll!":
             jump branch_1_3
 
+
 label branch_1_3:
     show osric sad
     "Wynn sniffs and casts you a sad glance, but doesn't resist."
@@ -166,18 +170,19 @@ label branch_1_3:
             jump branch_1_3_2
         "Yeah, she should rest.":
             $ os_affec += 2
+            show osric happy
             "Os seems to appreciate your gesture."
             jump branch_1_3_1
 
 
 label branch_1_3_1:
     show wynfled sad
+    show osric happy
     w "I feel really bad to sit out like this..."
     mc "Your safety comes first, Wynn."
     show wynfled happy
     w "I really appreciate you guys."
     hide wynfled
-    show osric happy
     o "Ok, [nickname] - can you try leaning over and pouring both sides at once?"
     menu:
         "Then it won't be evenly spread.":
@@ -199,7 +204,7 @@ label branch_1_3_1_1:
         "Where are you going, Wynn?":
             pass
         "*She must have her reasons for sneaking away, she knows what she's doing*":
-            pass
+            $ wynn_affec += 3
     mc "Nah, it's all thanks to our hard work, definitely!"
     "You tip the red powder evenly and carefully."
     mc "Wynn does have a point though. Seolforstan really is a prison, hm?"
@@ -214,14 +219,30 @@ label branch_1_3_1_1:
     show osric laughing
     "You laugh together."
 
-    
+
+label branch_1_3_1_3:
+    show wynfled surprised
+    show osric surprised
+    "Wynn turns around."
+    o "Where were you going?"
+    show wynfled sad
+    w "Sorry. I'll sit back down."
+    show osric angry
+    o "Where were you going, Wynn? I'm asking."
+    show wynfled angry
+    w "And I'm obliged to answer, huh?"
+    mc "It's dangerous heading out alone. What if you got lost?"
+    $ wynn_affec -= 10
+    $ os_affec -= 5
+    w "And if I got lost? Then? Huh?"
+
 
 label branch_1_3_1_2:
     "You lean over, trying to focus."
-    "You accidentally tip out far too much reactant."
-    "Out of the corner of your eye, you see Os drawing back the blast trigger of his pipe."
-    "It's too late. You can feel it."
-    mc "Wait! Os! Don't - !"
+    "{color=#f00}You accidentally tip out far too much reactant.{/color}"
+    "{color=#f00}Out of the corner of your eye, you see Os drawing back the blast trigger of his pipe.{/color}"
+    "{color=#f00}It's too late. You can feel it.{/color}"
+    mc "{color=#f00}Wait! Os! Don't - !{/color}"
 
 
 label branch_1_3_2:
@@ -235,11 +256,13 @@ label branch_1_3_2:
     w "Really, I was just joking earlier."
     menu:
         "Wynn, you know what? Take a break. We can tell you're hurting.":
+            show osric laughing
             $ os_affec += 2
             $ wynn_affec -= 1
             "Os seems to appreciate your considerosity, while Wynn seems to feel patronised."
             jump branch_1_3_1
         "*gloss over Os's question*":
+            show osric angry
             $ os_affec -= 20
             $ wynn_affec += 5
             "Os looks incredibly angry at your inconsideration, while Wynn seems to slightly appreciate your diminishing of the ordeal."
@@ -287,6 +310,7 @@ label branch_3:
         "*Say nothing and continue to rest*":
             jump branch_3_1
 
+
 label branch_3_1:
     show wynfled happy at left
     show osric laughing at right
@@ -314,8 +338,10 @@ label branch_3_1:
     "You all work together, but you certainly haven't met the quota."
     jump branch_3_2
 
+
 label branch_3_2:
     pass
+
 
 label con_branch_1_to_2:
     w "Ugh, you're right. Os, how bad can the punishment actually be?"
@@ -335,6 +361,7 @@ label con_branch_1_to_2:
         "Better to be safe there than perishing in the cold. Let's get back to work.":
             jump branch_1_1
     
+
 label con_branch_3_to_3:
     show osric normal
     "Os glances down at the pile too."
