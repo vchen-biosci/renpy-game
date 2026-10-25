@@ -319,6 +319,7 @@ label ch1_con01a1a2_wynn_hurts:
 
 
 label ch1_01b_take_rest:
+    "*time skip*"
     show wynfled laughing
     show osric laughing
     o "We've really done nothing, huh!"
@@ -341,18 +342,37 @@ label ch1_01b1_explore:
         "How are we going to find our way back later?":
             show osric normal
             o "That's a good point. We can't risk getting lost."
-            w "What if we hammer some holes in the ice every 50 meters?"
+            w "What if we melt the ice every 50 meters?"
             mc "How would that work?"
             show wynfled thinking
             w "On the way back, we each travel in one direction to find the hole we made before."
             w "And one of us will find the hole. Then we all regroup and walk to the next meeting point."
+            o "I like that idea!"
             menu:
                 "That's too dangerous. We can't risk splitting up.":
                     show wynfled happy
                     w "What do you think then?"
-            define way_back = True
-        "Which way do you want to head?":
-            define way_back = False
+                    "Your idea consists of using rope to connect each other while searching."
+                    "Fundamentally, you'd have one person walking around the whole with everyone else covering a wide circle."
+                    "It's much more time and energy consuming, but perhaps safer."
+                    menu:
+                        "On second thought, let's go with that.":
+                            show wynfled laughing
+                            w "Hehe!"
+                            $ wynn_affec += 2
+                            define way_back = "searching"
+                        "*Modify her plan*":
+                            define way_back = "circling"
+                            show osric laughing
+                            o "Smart!"
+                            $os_affec += 2
+                "That's a good idea, Wynn!":
+                    wynn_affec += 2
+                    define way_back = "searching"
+            mc "Looks like we've finished our plan. Let's go that way!"
+        "Let's go that way!":
+            define way_back = None
+    "Alright!"
 
 
 label ch1_01a1a1_play_to_night:
