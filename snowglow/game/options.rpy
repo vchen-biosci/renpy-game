@@ -30,6 +30,7 @@ define config.version = "1.0"
 ## triple-quotes, and leave a blank line between paragraphs.
 
 define gui.about = _p("""
+Created as an entry to Hack Club's Snowglobe programme! Programmer and story writer: Vivienne Chen; Original art and music: @sty.bry (instagram); Project began on 23/11/26.
 """)
 
 

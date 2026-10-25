@@ -3,9 +3,10 @@
 # Declare characters used by this game. The color argument colorizes the
 # name of the character.
 
-define o = Character("Osric", color="#af8a45")
-define w = Character("Wynfled", color="#0464ff")
-define n = Character("Nightcumb", color="#ff19e8")
+define o = Character("Osric", color="#af8a45", what_color="#f5d79f")
+define w = Character("Wynfled", color="#0464ff", what_color="#bfd5f8")
+define n = Character("Nightcumb", color="#ff19e8", what_color="#ffcafa")
+define narrator = Character(what_italic = True)
 default wynn_affec = 100
 default os_affec = 60
 default suspicion_list = []
@@ -21,7 +22,7 @@ label start:#MC mining ice with team
     show mining site with dissolve
     with None
     "Before we begin, let's learn a bit more about you."
-    define mc = Character("[name]")
+    define mc = Character("[name + '(You)']", what_color="#bb799a")
 
     python:
         name = renpy.input("What's your name?", length=32, default="Maren Rime")
@@ -329,6 +330,11 @@ label ch1_01b_take_rest:
     menu:
         "I'm curious about what's out there too.":
             o "Really?"
+            mc "Yeah, let's explore!"
+            show osric normal
+            o "Osric looks annoyed for a second."
+            $ os_affec -= 1
+            show osric happy
             w "YES!"
             jump ch1_01b1_explore
         "It's dangerous out there. Let's stay here.":
@@ -353,10 +359,10 @@ label ch1_01b1_explore:
                     show wynfled happy
                     w "What do you think then?"
                     "Your idea consists of using rope to connect each other while searching."
-                    "Fundamentally, you'd have one person walking around the whole with everyone else covering a wide circle."
+                    "Fundamentally, you'd have one person walking around the hole with everyone else covering a wide circle."
                     "It's much more time and energy consuming, but perhaps safer."
                     menu:
-                        "On second thought, let's go with that.":
+                        "On second thought, let's go with your strategy.":
                             show wynfled laughing
                             w "Hehe!"
                             $ wynn_affec += 2
@@ -367,7 +373,7 @@ label ch1_01b1_explore:
                             o "Smart!"
                             $os_affec += 2
                 "That's a good idea, Wynn!":
-                    wynn_affec += 2
+                    $ wynn_affec += 2
                     define way_back = "searching"
             mc "Looks like we've finished our plan. Let's go that way!"
         "Let's go that way!":
@@ -404,7 +410,8 @@ label ch1_01a1a1_play_to_night:
 label ch1_01a1a1a_wasted_day:
     show wynfled happy at left
     show osric laughing at right
-    "You three did exactly what you said you'd do: mess around instead of mining ice."
+    "*Time skip*"
+    "In the end, you three did exactly what you said you'd do: mess around instead of mining ice."
     "But now as the sky grows darker, you feel a growing sense of unease."
     menu:
         "Should we mine a bit more before Nightcumb comes?":
@@ -436,6 +443,7 @@ label ch1_01a1a1a1_regret:
     "All three of you are silent. In hindsight, maybe you shouldn't have messed around so much."
     "Finally, Osric breaks the silence."
     o "So tonight'll be our last night in Seolforstan, huh."
+    mc "What do you mean?"
     w "Don't say that. Maybe... maybe somehow..."
     "Her words die down as she speaks."
     w "...maybe there's just really... really concentrated Elnaxan in the ice."
