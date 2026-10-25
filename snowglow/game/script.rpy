@@ -206,6 +206,12 @@ label ch1_01a1a2a1_wynn_sneaks_away:
             jump ch1_01a1a2a1a_confront_wynn
         "*She must have her reasons for sneaking away, she knows what she's doing*":
             $ wynn_affec += 3
+            jump ch1_01a1a2a1b_let_wynn_go
+    
+
+
+label ch1_01a1a2a1b_let_wynn_go:
+    "You continue the conversation, pretending you saw nothing."
     mc "Nah, it's all thanks to our hard work, definitely!"
     "You tip the red powder evenly and carefully."
     mc "Wynn does have a point though. Seolforstan really is a prison, hm?"
@@ -219,6 +225,63 @@ label ch1_01a1a2a1_wynn_sneaks_away:
     o "Once a month..."
     show osric laughing
     "You laugh together."
+    show osric normal
+    o "Well, it's not like we have a choice."
+    menu:
+        "Who wouldn't choose to help others?":
+            show osric laughing
+            o "We only signed up to get better experience. Don't lie."
+            show osric happy
+            mc "Caught me there."
+            jump ch1_01a1a2a1b1_notice_time
+        "Right. They've been lowering the minimum age too.":
+            jump ch1_con01a1a2a1b_sus_sustainability
+
+    
+label ch1_01a1a2a1b1_notice_time:
+    show osric normal
+    "You end up doing more talking than working."
+    "Even so, you collect enough ice to meet the quota."
+    o "Say, hasn't Wynn been gone for quite a while?"
+    menu:
+        "Should we go search?":
+            jump ch1_01a1a2a1b1_search_for_wynn
+        "She'll probably be able to find her way back.":
+            jump ch1_01a1a2a1b2_wait_it_out
+
+
+label ch1_con01a1a2a1b_sus_sustainability:
+    o "People have been dying and getting exiled left and right."
+    "You tense up."
+    mc "Well, that was a bit direct, wasn't it?"
+    show osric angry
+    o "Well, am I lying?"
+    o "How long can they keep going until everyone's gone?"
+    $ suspicion_list.append("The orphanage doesn't seem to care about sustainability, removing more people than it keeps or takes in.")
+    mc "You wouldn't mention stuff like this if Wynn was here."
+    show osric surprised
+    o "You also noticed her sneaking off?"
+    mc "O-oh. Um, yeah."
+    show osric happy
+    o "Looks like you're thinking along my lines."
+    menu:
+        "Well, you know how she'd react if we called her out.":
+            show osric laughing
+            $ os_affec += 10
+            $ wynn_affec -= 6
+            o "She does get like that."
+            "You feel bad for talking about Wynn in this way, but your bond with Os seems to have grown over your secret."
+        "We need to give her space. Even if it's a bit dangerous...":
+            $ wynn_affec += 10
+            o "...yeah. That's basically it."
+    jump ch1_01a1a2a1b1_notice_time
+
+
+label ch1_01a1a2a1b1_search_for_wynn:
+    pass
+
+label ch1_01a1a2a1b2_wait_it_out:
+    pass
 
 
 label ch1_01a1a2a1a_confront_wynn:
