@@ -7,8 +7,8 @@ define o = Character("Osric", color="#af8a45")
 define w = Character("Wynfled", color="#0464ff")
 define n = Character("Nightcumb", color="#ff19e8")
 default wynn_affec = 100
-default os_affec = 50
-default skip_ice = False
+default os_affec = 60
+default suspicion_list = []
 define gui.text_font = "GlacialIndifference-Regular.otf"
 define gui.text_instance = "light"
 define gui.text_axis = {"width" : 125}
@@ -319,7 +319,40 @@ label ch1_con01a1a2_wynn_hurts:
 
 
 label ch1_01b_take_rest:
-    #put a minigame here later to convince Wynn and Osric to stop mining
+    show wynfled laughing
+    show osric laughing
+    o "We've really done nothing, huh!"
+    w "Should we go explore out there instead?"
+    o "Wynn!"
+    w "It's our first time this far from Seolforstan anyways..."
+    menu:
+        "I'm curious about what's out there too.":
+            o "Really?"
+            w "YES!"
+            jump ch1_01b1_explore
+        "It's dangerous out there. Let's stay here.":
+            w "Haha, you're right!"
+            "Wynn steals Os's shovel."
+            jump ch1_01a1a1_play_to_night
+
+    
+label ch1_01b1_explore:
+    menu:
+        "How are we going to find our way back later?":
+            show osric normal
+            o "That's a good point. We can't risk getting lost."
+            w "What if we hammer some holes in the ice every 50 meters?"
+            mc "How would that work?"
+            show wynfled thinking
+            w "On the way back, we each travel in one direction to find the hole we made before."
+            w "And one of us will find the hole. Then we all regroup and walk to the next meeting point."
+            menu:
+                "That's too dangerous. We can't risk splitting up.":
+                    show wynfled happy
+                    w "What do you think then?"
+            define way_back = True
+        "Which way do you want to head?":
+            define way_back = False
 
 
 label ch1_01a1a1_play_to_night:
