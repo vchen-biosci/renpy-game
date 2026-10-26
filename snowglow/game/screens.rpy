@@ -116,6 +116,11 @@ screen say(who, what):
         add SideImage() xalign 0.0 yalign 1.0
 
 
+##screen for vignette
+screen vignette():
+    zorder 100  # Keeps the overlay on top of other UI elements
+    add "images/sfx/vignette overlay.png" xalign 0.5 yalign 0.5
+
 ## Make the namebox available for styling through the Character object.
 init python:
     config.character_id_prefixes.append('namebox')

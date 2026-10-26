@@ -343,9 +343,10 @@ label ch1_end01_explosion:
     "{color=#f00}You accidentally tip out far too much reactant.{/color}"
     "{color=#f00}Out of the corner of your eye, you see Os drawing back the blast trigger of his pipe.{/color}"
     "{color=#f00}It's too late. You can feel it.{/color}"
-    mc "{color=#f00}Wait! Os! Don't - !{/color}"
+    mc "{color=#f00}Wait! Os! Don't - !{/color}" with vpunch
     play music death_ost loop volume 0.75
-    show mining site with dissolve
+    show death 1 with dissolve
+    show screen vignette()
     hide osric 
     "The next time you look up, it's the sky that covers your view."
     "The world blurs slowly."
@@ -411,14 +412,14 @@ label ch1_01b_take_rest:
             $ os_affec -= 1
             show osric happy
             w "YES!"
-            jump ch1_01b1_explore
+            jump ch1_con01b1_explore
         "It's dangerous out there. Let's stay here.":
             w "Haha, you're right!"
             "Wynn steals Os's shovel."
             jump ch1_01a1a1_play_to_night
 
     
-label ch1_01b1_explore:
+label ch1_con01b1_explore:
     menu:
         "How are we going to find our way back later?":
             show osric normal
@@ -454,6 +455,13 @@ label ch1_01b1_explore:
         "Let's go that way!":
             define way_back = None
     "Alright!"
+
+
+label ch1_01b1_explore:
+    show osric laughing
+    show wynfled laughing
+    "You walk west of the mining spot."
+    w "Hey, after we get exiled, every day'll be full of this!"
 
 
 label ch1_01a1a1_play_to_night:
