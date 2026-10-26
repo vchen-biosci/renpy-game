@@ -25,14 +25,14 @@ label start:#MC mining ice with team
     define mc = Character("[nickname + ' (You)']", what_color="#bb799a")
 
     python:
-        name = renpy.input("What's your name?", length=32, default="Maren Rime")
-        name = name.strip()
+        name = renpy.input("What's your name? (max 20 chars)", length=20, default="Maren Rime")
+        name = name.strip().title()
 
         if not name:
             name = "Maren Rime"
 
-        nickname = renpy.input("What nickname do you like to be called?", length=32, default="Mare")
-        nickname = nickname.strip()
+        nickname = renpy.input("What nickname do you like to be called? (max 20 chars)", length=20, default="Mare")
+        nickname = nickname.strip().title()
         if not nickname:
             nickname = "Mare"
 
@@ -452,7 +452,8 @@ label ch1_con01b1_explore:
             mc "Looks like we've finished our plan. Let's go that way!"
         "Let's go that way!":
             define way_back = None
-    "Alright!"
+    w "Alright!"
+    jump ch1_01b1_explore
 
 
 label ch1_01b1_explore:
@@ -473,8 +474,29 @@ label ch1_01b1_explore:
     # play music wider ismere (once i have it composed lol)
     show osric blushing
     o "It... it's beautiful."
-
-
+    menu:
+        "They've kept us from this all our lives.":
+            $ os_affec += 3
+            show wynfled sad
+            show osric happy
+            "Wynn looks pensive, while Os smiles cynically."
+            o "We've really been missing out."
+        "This doesn't even look real. It can't be real. It doesn't feel like it.":
+            $ wynn_affec += 3
+            show wynfled laughing
+            w "Right? Seolforstan, it wasn't just a prison."
+            w "It was a sealed box, and Nightcumb was the reflective coating, keeping all this beauty away from every reaching the inside."
+            show osric happy
+            o "Wynn! I didn't know you had that poetic spark in you..."
+            show wynfled angry
+            w "Say that again! I dare you!" with vpunch
+    show wynfled happy
+    show osric laughing
+    mc "*You laugh hopelessly, then gaze at the expanse before you.*"
+    "Your mind spins. You feel like you're entirely lost."
+    "Rended apart, then whole again."
+    show osric happy
+    o "Earth to [nickname]..."
 
 
 
