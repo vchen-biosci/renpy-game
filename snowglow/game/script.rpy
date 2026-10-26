@@ -336,8 +336,6 @@ label ch1_01a1a2a1a1_elna_sus:
 
 
 
-
-
 label ch1_end01_explosion:
     "You lean over, trying to focus."
     "{color=#f00}You accidentally tip out far too much reactant.{/color}"
@@ -458,10 +456,26 @@ label ch1_con01b1_explore:
 
 
 label ch1_01b1_explore:
-    show osric laughing
-    show wynfled laughing
+
+    show osric laughing at left
+    show wynfled laughing at right
     "You walk west of the mining spot."
     w "Hey, after we get exiled, every day'll be full of this!"
+    show osric normal
+    "The mood seems to sober up, but Wynn doesn't realise it."
+    mc "We're taking the exile quite lightly, huh."
+    o "..."
+    mc "Come on, let's hurry forward."
+    "You walk on for what seems like ages."
+    "Curiosity. Excitement. Awe."
+    "All these emotions spur you on to keep going."
+    show wider ismere with dissolve
+    # play music wider ismere (once i have it composed lol)
+    show osric blushing
+    o "It... it's beautiful."
+
+
+
 
 
 label ch1_01a1a1_play_to_night:
@@ -561,7 +575,7 @@ label ch1_01a1a1a1a_quota_check:
     n "Kids, looks like you're very lucky! With this much ice you somehow managed to meet the quota."
     show wynfled surprised
     show osric surprised
-    n "Well then, I'll be off! Stay here and wait so that all groups head back together, alright?"
+    n "Well then, I'll be off! Stay here and wait so that all groups  together, alright?"
     n "And make sure not to wander too far, alright?"
     hide nightcumb 
 
