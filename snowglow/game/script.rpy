@@ -22,7 +22,7 @@ label start:#MC mining ice with team
     show mining site with dissolve
     with None
     "Before we begin, let's learn a bit more about you."
-    define mc = Character("[nickname + '(You)']", what_color="#bb799a")
+    define mc = Character("[nickname + ' (You)']", what_color="#bb799a")
 
     python:
         name = renpy.input("What's your name?", length=32, default="Maren Rime")
@@ -346,12 +346,12 @@ label ch1_end01_explosion:
     mc "{color=#f00}Wait! Os! Don't - !{/color}" with vpunch
     play music death_ost loop volume 0.75
     show death 1 with dissolve
-    show screen vignette()
     hide osric 
     "The next time you look up, it's the sky that covers your view."
     "The world blurs slowly."
+    show screen vignette()
     "And then it hits you; you're about to die."
-    "You're met with an instant clarity."
+    "You're met with an instant clarity." with vpunch
     "Accidents like this happen all the time. You were prepared."
     "All in all, it wasn't a bad way to go out."
     "You leave the world free, and your soul soars, higher and higher."
