@@ -20,13 +20,16 @@ screen glossary(target, x, y): # deleted styling elements but feel free to add t
             has vbox
             label target
             text glossary_dict[target]
+    #TODO: make the glossary screen more aesthetic
 
+#TODO: make a quick branch explaining the bug where stuff loops that unfinished branches jump to
 
 default glossary_dict = {
 "West-Iyrie":"The most widely held religion in the world, originated in Thalizac, Promland. Believing in the unity of the binary gods Andinomie, and their angels, Ychsympal. Due to historical reasons, however, it's not as popular in Promland, except in Thalizac.",
 "Elnaxanthine":"A mineral found in the local ice. Needed for survival in the cold. Its extraction is very complicated.",
 "Quota":"Minimum volume of Elnaxanthine a team needs to harvest in a given expedition. If the quota is not met, exile is imminent."
 }
+#TODO: fix KeyError glossary bug
 
 #template: {a=glossary:Elnaxanthine}⫶🔻 Elnaxanthine{/a}
     
@@ -320,9 +323,11 @@ label ch1_con01a1a2a1b_sus_sustainability:
 
 
 label ch1_01a1a2a1b1_search_for_wynn:
+    #TODO: work on this branch
     pass
 
 label ch1_01a1a2a1b2_wait_it_out:
+    #TODO: work on this branch
     pass
 
 
@@ -375,7 +380,7 @@ label ch1_01a1a2a1a1_elna_sus:
     show wynfled thinking
     w "But what happens once we completely run out of Elnaxan near the orphanage?"
     mc "I guess we'd have to come out to wider Ismere more often, no?"
-
+    #TODO: work on this branch
 
 
 label ch1_end01_explosion:
@@ -542,10 +547,8 @@ label ch1_01b1_explore:
     "Rended apart, then whole again."
     show osric happy
     o "Earth to [nickname]..."
+    #TODO: work on this branch
 
-
-
-#TODO: add sound effects
 
 label ch1_01a1a1_play_to_night:
     show wynfled happy at right

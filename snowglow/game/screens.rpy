@@ -274,8 +274,8 @@ style quick_button is default
 style quick_button_text is button_text
 
 style quick_menu:
-    xalign 0.5
-    yalign 1.0
+    xalign 0.87
+    yalign 0.9
 
 style quick_button:
     properties gui.button_properties("quick_button")
@@ -398,6 +398,7 @@ style main_menu_frame:
     yfill True
 
     #background "gui/overlay/main_menu.png"
+    #TODO: fix bug where main menu image shows in background of other toggle screens
 
 style main_menu_vbox:
     xalign 1.0
