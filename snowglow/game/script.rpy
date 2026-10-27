@@ -1,12 +1,53 @@
 ﻿# The script of the game goes in this file.
 
+#glossary code partial credit to philat on lemmasoft renai us forum
+init python:
+    def glossary_handler(target):
+        x, y = renpy.get_mouse_pos()
+        renpy.show_screen("glossary", target, x, y)
+        renpy.restart_interaction()
+
+    config.hyperlink_handlers["glossary"] = glossary_handler
+
+screen glossary(target, x, y): # deleted styling elements but feel free to add them back
+    zorder 250
+    button background None action Hide("glossary")
+    vbox:
+        xpos x
+        ypos y
+        frame:
+            xmaximum 400
+            has vbox
+            label target
+            text glossary_dict[target]
+
+
+default glossary_dict = {
+"West-Iyrie":"The most widely held religion in the world, originated in Thalizac, Promland. Believing in the unity of the binary gods Andinomie, and their angels, Ychsympal. Due to historical reasons, however, it's not as popular in Promland, except in Thalizac.",
+"Elnaxanthine":"A mineral found in the local ice. Needed for survival in the cold. Its extraction is very complicated.",
+"Quota":"Minimum volume of Elnaxanthine a team needs to harvest in a given expedition. If the quota is not met, exile is imminent."
+}
+
+#template: {a=glossary:Elnaxanthine}⫶🔻 Elnaxanthine{/a}
+    
+image ctc:
+    #ctc code credit to CheeryMoya and OokamiKasumi lemmasoft renai us forum
+    "gui/ctc_icon.png" with Dissolve(0.4), #This is your image
+    subpixel True #This line makes sure that ATL is smooth 
+
+    yalign 0.76 xalign 0.94 #Adjust these numbers to fit your own textbox
+    linear 0.5 yalign 0.77
+    linear 0.5 yalign 0.76
+    
+    repeat
+
 # Declare characters used by this game. The color argument colorizes the
 # name of the character.
 
-define o = Character("Osric", color="#af8a45", what_color="#f5d79f")
-define w = Character("Wynfled", color="#0464ff", what_color="#bfd5f8")
-define n = Character("Nightcumb", color="#ff19e8", what_color="#ffcafa")
-define narrator = Character(what_italic = True)
+define o = Character("Osric", color="#af8a45", what_color="#f5d79f", ctc="ctc", ctc_position="fixed")
+define w = Character("Wynfled", color="#0464ff", what_color="#bfd5f8", ctc="ctc", ctc_position="fixed")
+define n = Character("Nightcumb", color="#ff19e8", what_color="#ffcafa", ctc="ctc", ctc_position="fixed")
+define narrator = Character(what_italic = True, ctc="ctc", ctc_position="fixed")
 default wynn_affec = 100
 default os_affec = 60
 default suspicion_list = []
@@ -41,14 +82,14 @@ label start:#MC mining ice with team
     "This is Wynn (Wynfled). She's your best friend."
     hide wynfled
     show osric normal at left
-    "This is Os (Osric). He's your other team-member for the Elnaxanthine expedition."
+    "This is Os (Osric). He's your other team-member for the {a=glossary:Elnaxanthine}⫶🔻 Elnaxanthine{/a} Elnaxanthine expedition."
     show wynfled sad at right
     w "I'm... so tired."
     "You look down at the shoddy pile of ice you've gathered."
     "There's definitely not enough Elnaxanthine in there to meet the quota."
     "You might as well give up at this rate."
     menu: 
-        "We're still short on Elnaxan. Let's keep mining.":
+        "We're still short on Elnaxanthine. Let's keep mining.":
             jump ch1_01a_keep_mining
         "...let's take a break.":
             jump ch1_01b_take_rest
@@ -57,7 +98,7 @@ label start:#MC mining ice with team
 label ch1_01a_keep_mining:
     w "How'd I get roped into this again?"
     show osric laughing
-    o "We've got to meet the quota, Wynn. We signed up for this, remember?"
+    o "We've got to meet the {a=glossary:Quota}🔻 quota{/a}, Wynn. We signed up for this, remember?"
     show wynfled angry
     w "Well, the quota's STUPID."
     show wynfled thinking
@@ -595,7 +636,7 @@ label ch1_01a1a1a1_regret:
 
 label ch1_01a1a1a1a_quota_check:
     show nightcumb normal
-    "You watch Nightcumb procure his elnaxanthin detector kit. He scatters green powder all over the ice."
+    "You watch Nightcumb procure his elnaxanthine detector kit. He scatters green powder all over the ice."
     "The powder fully coats the ice's surface."
     "But that can't possibly be a reliable method, can it?"
     n "Hm. Dark green concentration."
