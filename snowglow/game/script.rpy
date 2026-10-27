@@ -19,6 +19,7 @@ define gui.text_size = 35
 label start:#MC mining ice with team
 
     play music [over_the_rise, ismere_theme] fadeout 1.0 fadein 1.0 loop volume 0.75
+    play ambiance ambient_wind loop volume 0.1
     show mining site with dissolve
     with None
     "Before we begin, let's learn a bit more about you."
@@ -470,9 +471,12 @@ label ch1_01b1_explore:
     "You walk on for what seems like ages."
     "Curiosity. Excitement. Awe."
     "All these emotions spur you on to keep going."
+    hide osric 
+    hide wynfled
     show wider ismere with dissolve
-    # play music wider ismere (once i have it composed lol)
-    show osric blushing
+    play music wider_ismere loop volume 0.75 fadein 1.0
+    show osric blushing at left
+    show wynfled surprised at right
     o "It... it's beautiful."
     menu:
         "They've kept us from this all our lives.":
@@ -499,6 +503,8 @@ label ch1_01b1_explore:
     o "Earth to [nickname]..."
 
 
+
+#TODO: add sound effects
 
 label ch1_01a1a1_play_to_night:
     show wynfled happy at right

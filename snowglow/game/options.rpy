@@ -208,3 +208,18 @@ init python:
 ## by a slash.
 
 define build.itch_project = "vchen-bit()/snowglow"
+
+# Dialogue clicking
+init python:
+    #credits for this code to Globover on Reddit!
+    def dialogue_click_sound():
+        if not renpy.config.skipping:
+            renpy.sound.play("audio/sound effects/click.mp3") 
+        return True
+
+    config.say_allow_dismiss = dialogue_click_sound
+
+
+#channel for ambiance
+init python:
+    renpy.music.register_channel("ambiance")
