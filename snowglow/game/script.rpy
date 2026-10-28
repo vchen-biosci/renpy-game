@@ -9,29 +9,7 @@ init python:
 
     config.hyperlink_handlers["glossary"] = glossary_handler
 
-define past_code = """screen glossary(target, x, y): # deleted styling elements but feel free to add them back
-    zorder 250
-    button background None action Hide("glossary")
-    vbox:
-        xpos x
-        ypos y
-        frame:
-            xmaximum 400
-            has vbox
-            label target
-            text glossary_dict[target]"""
     #TODO: make the glossary screen more aesthetic
-
-screen glossary(target, x, y):
-    zorder 250
-    button background None action Hide("glossary")
-    vbox:
-        xalign 0.90 yalign 0.56
-        frame:
-            xmaximum 700
-            has vbox
-            label target
-            text glossary_dict[target]
 
 
 #TODO: make a quick branch explaining the bug where stuff loops that unfinished branches jump to
@@ -41,8 +19,6 @@ default glossary_dict = {
 'Quota':'Minimum volume of Elnaxanthine a team needs to harvest in a given expedition. If the quota is not met, exile is imminent.',
 }
 
-#TODO: fix KeyError glossary bug
-
 #template: {a=glossary:Elnaxanthine}⫶🔻 Elnaxanthine{/a}
     
 image ctc:
@@ -50,7 +26,7 @@ image ctc:
     "gui/ctc_icon.png" with Dissolve(0.4), #This is your image
     subpixel True #This line makes sure that ATL is smooth 
 
-    yalign 0.76 xalign 0.94 #Adjust these numbers to fit your own textbox
+    yalign 0.76 xalign 0.85 #Adjust these numbers to fit your own textbox
     linear 0.5 yalign 0.77
     linear 0.5 yalign 0.76
     
@@ -79,7 +55,7 @@ label start:#MC mining ice with team
     show mining site with dissolve
     with None
     "Before we begin, let's learn a bit more about you."
-    define mc = Character("[nickname + ' (You)']", what_color="#bb799a")
+    define mc = Character("[nickname + ' (You)']", what_color="#bb799a", ctc="ctc", ctc_position="fixed")
 
     python:
         name = renpy.input("What's your name? (max 20 chars)", length=20, default="Maren Rime")
@@ -336,7 +312,10 @@ label ch1_con01a1a2a1b_sus_sustainability:
 
 
 label ch1_01a1a2a1b1_search_for_wynn:
-    #TODO: work on this branch
+    mc "But... where do you think she might be?"
+    "You look around you. Gentle slopes stretch on and on, ice formation rolling softly down."
+    o "I don't think she'd descend down a cliff alone."
+    mc "Right, it'd be hard for her to find her way back, hm?"
     pass
 
 label ch1_01a1a2a1b2_wait_it_out:

@@ -1630,3 +1630,18 @@ style slider_vbox:
 style slider_slider:
     variant "small"
     xsize 900
+            
+
+style glossary_style:
+    spacing 10
+    xalign 0.90 yalign 0.56
+
+screen glossary(target, x, y):
+    button background None action Hide("glossary")
+    vbox:
+        style "glossary_style"
+        xmaximum 700
+        box_wrap True
+        label target
+        text glossary_dict[target]
+        text "(Click to continue.)" size 22 
