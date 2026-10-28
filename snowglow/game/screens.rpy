@@ -1635,11 +1635,13 @@ style slider_slider:
 style glossary_style:
     spacing 10
 
+image glossary_background = Frame("gui/glossary_bg.png", Borders(20, 20, 20, 20))
 screen glossary(target, x, y):
     button background None action Hide("glossary")
       
     frame:
-        background "#051237" 
+        
+        background "glossary_background"
         xalign 0.90 yalign 0.53
         xpadding 30 ypadding 30
         has vbox
