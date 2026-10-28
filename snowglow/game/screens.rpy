@@ -223,7 +223,8 @@ style choice_button is button
 style choice_button_text is button_text
 
 style choice_vbox:
-    xalign 0.5
+    
+    xalign 1
     ypos 405
     yanchor 0.5
 
@@ -299,7 +300,7 @@ screen navigation():
         style_prefix "navigation"
 
         xpos gui.navigation_xpos
-        ypos 500
+        ypos 450
 
         spacing gui.navigation_spacing
 
@@ -375,6 +376,8 @@ screen main_menu():
     ## contents of the main menu are in the navigation screen.
     use navigation
 
+    python:
+        gui.show_name = False
     if gui.show_name:
 
         vbox:

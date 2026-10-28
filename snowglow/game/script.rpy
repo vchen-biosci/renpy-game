@@ -31,9 +31,7 @@ image ctc:
     
     repeat
 
-# Declare characters used by this game. The color argument colorizes the
-# name of the character.
-
+#variable initialisation
 define o = Character("Osric", color="#af8a45", what_color="#f5d79f", ctc="ctc", ctc_position="fixed")
 define w = Character("Wynfled", color="#0464ff", what_color="#bfd5f8", ctc="ctc", ctc_position="fixed")
 define n = Character("Nightcumb", color="#ff19e8", what_color="#ffcafa", ctc="ctc", ctc_position="fixed")
@@ -241,7 +239,6 @@ label ch1_01a1a2a1_wynn_sneaks_away:
             jump ch1_01a1a2a1b_let_wynn_go
     
 
-
 label ch1_01a1a2a1b_let_wynn_go:
     "You continue the conversation, pretending you saw nothing."
     mc "Nah, it's all thanks to our hard work, definitely!"
@@ -326,6 +323,7 @@ label ch1_01a1a2a1b1_search_for_wynn:
             show osric normal
             "Os purses his lips."
     
+
 label ch1_01a1a2a1b2_wait_it_out:
     "You both have absolute trust in Wynn."
     "Despite this, the conversation gradually dies down as you continue to mine."
