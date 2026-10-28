@@ -94,8 +94,8 @@ label ch1_01a_keep_mining:
     w "How'd I get roped into this again?"
     show osric laughing
     o "We've got to meet the {a=glossary:Quota}🔻 quota{/a}, Wynn. We signed up for this, remember?"
-    show wynfled angry
-    w "Well, the quota's STUPID."
+    show wynfled angry 
+    w "Well, the quota's STUPID." with vpunch
     show wynfled thinking
     w "Come to think of it, I haven't seen {a=glossary:Heda and Wren}⫶🔻 Heda and Wren{/a} since they were sent to {a=glossary:Eolyusion}⫶🔻 Eolyusion.{/a}"
     show osric normal
@@ -162,7 +162,7 @@ label ch1_01a1a_2nd_dig_succeeds:
     w "I know, right? Ahhhh, it's so warmmm! It feels like I'm melting."
     o "Should we push for another one?"
     show wynfled angry
-    w "I say no!"
+    w "I say no!" with vpunch
     show osric happy
     show wynfled normal
     o "What do you say, [nickname]?"
@@ -334,9 +334,9 @@ label ch1_01a1a2a1a_confront_wynn:
     show wynfled sad
     w "Sorry. I'll sit back down."
     show osric angry
-    o "Where were you going, Wynn? I'm asking."
+    o "Where were you going, Wynn? I'm asking." with vpunch
     show wynfled angry
-    w "And I'm obliged to answer, huh?"
+    w "And I'm obliged to answer, huh?" with vpunch
     mc "It's dangerous heading out alone. What if you got lost?"
     $ wynn_affec -= 10
     $ os_affec -= 5
@@ -439,16 +439,16 @@ label ch1_01b_take_rest:
     "*time skip*"
     show wynfled laughing
     show osric laughing
-    o "We've really done nothing, huh!"
+    o "Wow, we've done nothing out there all day."
     w "Should we go explore out there instead?"
+    show osric normal
     o "Wynn!"
     w "It's our first time this far from Seolforstan anyways..."
     menu:
         "I'm curious about what's out there too.":
             o "Really?"
             mc "Yeah, let's explore!"
-            show osric normal
-            o "Osric looks annoyed for a second."
+            "Osric shoots you a ... glare?"
             $ os_affec -= 1
             show osric happy
             w "YES!"
@@ -548,7 +548,8 @@ label ch1_01b1_explore:
 label ch1_01a1a1_play_to_night:
     show wynfled happy at right
     w "Osriccc! Come get it! [nickname], quit scowling!"
-    "Wynfled waves Os's shovel around, giggling."
+    "Wynfled waves Os's shovel around, giggling." with vpunch
+    mc "Um..."
     show osric happy at left
     o "...Give it here."
     w "No, no, I've got it."
@@ -561,9 +562,10 @@ label ch1_01a1a1_play_to_night:
     w "Oh nooo, where'd your shovel go, Os?"
     show osric happy
     o "You serious?"
-
+    show screen vignette()
     "You grow slightly restless looking at the pile."
     "You really don't have enough ice to guarantee anything."
+    hide screen vignette
     menu:
         "Hey, we might not have met the Elnaxan quota yet.":
             jump ch1_con01a1a1_dismiss_punishment
