@@ -318,12 +318,33 @@ label ch1_01a1a2a1b1_search_for_wynn:
     mc "But... where do you think she might be?"
     "You look around you. Gentle slopes stretch on and on, ice formation rolling softly down."
     o "I don't think she'd descend down a cliff alone."
-    mc "Right, it'd be hard for her to find her way back, hm?"
-    pass
-
+    mc "Right, it'd be hard for her to find her way back if she did... she knows that, right?"
+    show osric happy
+    o "How little trust do you have in her?"
+    menu:
+        "You know that's not what I meant!":
+            show osric laughing
+            $ osric_affec += 2
+            o "Good one, good one!"
+            show osric normal
+        "We're forgetting that it's dangerous out here.":
+            show osric normal
+            "Os purses his lips."
+    
 label ch1_01a1a2a1b2_wait_it_out:
+    "You both have absolute trust in Wynn."
+    "Despite this, the conversation gradually dies down as you continue to mine."
+    "Some time passes before you pipe up again."
+    mc "I'm tired. And... we've definitely mined enough."
+    show osric happy
+    o "Hey, maybe we can win the Elnaxan Award if we keep going. Wouldn't that be cool, winning it in our first year?"
+    mc "Haha! Keep deluding yourself!"
+    show osric blushing 
+    o "I was being serious!" with vpunch
+    show osric sad
+    mc "Well, there's real professionals that've been at it for years."
+    "Osric sighs."
     #TODO: work on this branch
-    pass
 
 
 label ch1_01a1a2a1a_confront_wynn:
@@ -358,6 +379,7 @@ label ch1_01a1a2a1a_confront_wynn:
             "Wynn looks happy. You feel your bond growing slightly stronger."
             jump ch1_01a1a2a1a1_elna_sus
 
+
 label ch1_01a1a2a1a1_elna_sus:
     #change the scene to show night-time at the glacier
     show osric happy at right
@@ -381,8 +403,10 @@ label ch1_01a1a2a1a1_elna_sus:
 label ch1_end01_explosion:
     "You lean over, trying to focus."
     "{color=#f00}You accidentally tip out far too much reactant.{/color}"
+    show screen vignette()
     "{color=#f00}Out of the corner of your eye, you see Os drawing back the blast trigger of his pipe.{/color}"
     "{color=#f00}It's too late. You can feel it.{/color}"
+    hide screen vignette
     mc "{color=#f00}Wait! Os! Don't - !{/color}" with vpunch
     play music death_ost loop volume 0.75
     show death 1 with dissolve
@@ -578,7 +602,9 @@ label ch1_01a1a1a_wasted_day:
     show osric laughing at right
     "*Time skip*"
     "In the end, you three did exactly what you said you'd do: mess around instead of mining ice."
+    show screen vignette()
     "But now as the sky grows darker, you feel a growing sense of unease."
+    hide screen vignette
     menu:
         "Should we mine a bit more before Nightcumb comes?":
             show wynfled normal
