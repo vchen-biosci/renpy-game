@@ -9,8 +9,6 @@ init python:
 
     config.hyperlink_handlers["glossary"] = glossary_handler
 
-    #TODO: make the glossary screen more aesthetic
-
 
 #TODO: make a quick branch explaining the bug where stuff loops that unfinished branches jump to
 
@@ -21,8 +19,6 @@ default glossary_dict = {
 'Heda and Wren': 'Two other children that used to live at the orphanage. They signed up for the Elanxanthine expedition and failed to meet the quota.',
 'Seolforstan': 'The only place you and your friends have ever known.'
 }
-
-#template: {a=glossary:Elnaxanthine}⫶🔻 Elnaxanthine{/a}
     
 image ctc:
     #ctc code credit to CheeryMoya and OokamiKasumi lemmasoft renai us forum
@@ -73,7 +69,6 @@ label start:#MC mining ice with team
             nickname = "Mare"
 
     show wynfled normal at right
-    mc "[glossary_dict['Quota']]"
     "This is Wynn (Wynfled). She's your best friend."
     hide wynfled
     show osric normal at left
@@ -630,21 +625,27 @@ label ch1_01a1a1a_wasted_day:
 
 label ch1_01a1a1a1_regret:
     #put scene change to darker sky/overlay a darker colour to show that its nighttme
+    show osric normal
     show wynfled normal
     w "It's tidy now, but..."
     "All three of you are silent. In hindsight, maybe you shouldn't have messed around so much."
     "Finally, Osric breaks the silence."
+    show wynfled sad
     o "So tonight'll be our last night in Seolforstan, huh."
     mc "What do you mean?"
     w "Don't say that. Maybe... maybe somehow..."
     "Her words die down as she speaks."
+    show wynfled normal
     w "...maybe there's just really... really concentrated Elnaxan in the ice."
     mc "I wonder how they detect Elnaxan anyways?"
+    show osric happy
     o "That's up to the scientists to do. We don't have the privilege of knowing."
     show wynfled laughing
+    show osric surprised
     w "Hey, think we could bribe a scient-AAAAAAA!"
     show nightcumb normal
     show wynfled scared
+    show osric normal
     w "He-hello, sir!" 
     n "Hello, children."
     "You all straighten your posture and avert your eyes as he walks over."
@@ -660,6 +661,7 @@ label ch1_01a1a1a1_regret:
             hide nightcumb
             jump ch1_01a1a1a1b_plot_during_quota
 
+
 label ch1_01a1a1a1a_quota_check:
     show nightcumb normal
     "You watch Nightcumb procure his elnaxanthine detector kit. He scatters green powder all over the ice."
@@ -673,6 +675,7 @@ label ch1_01a1a1a1a_quota_check:
     n "Well then, I'll be off! Stay here and wait so that all groups  together, alright?"
     n "And make sure not to wander too far, alright?"
     hide nightcumb 
+
 
 label ch1_01a1a1a1b_plot_during_quota:
     show wynfled thinking
@@ -691,7 +694,6 @@ label ch1_01a1a1a1b_plot_during_quota:
             o "Damn it. Fine, let's head back then."
             jump ch1_01a1a1a1a_quota_check
         ""
-
     
 
 label ch1_con1a_mention_punishment:
