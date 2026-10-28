@@ -3,7 +3,7 @@
 DEMO LINK: [https://vchen-bit.itch.io/snowglow]
 
 Main menu preview:
-<img width="1920" height="1080" alt="main_menu" src="https://github.com/user-attachments/assets/79d89abd-01ff-4f25-b2b9-01176fe6d820" />
+<img width="1326" height="746" alt="Screenshot 2026-10-28 at 22 10 42" src="https://github.com/user-attachments/assets/fcb0431c-9972-45d2-a826-d0a33e68b9b2" />
 
 Game preview:
 <img width="1373" height="771" alt="Screenshot 2026-10-25 at 16 13 46" src="https://github.com/user-attachments/assets/412c0077-d484-498c-9135-0aa79c245b35" />
