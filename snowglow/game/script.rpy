@@ -15,8 +15,11 @@ init python:
 #TODO: make a quick branch explaining the bug where stuff loops that unfinished branches jump to
 
 default glossary_dict = {
-'Elnaxanthine':'A mineral found in the local ice. Needed for survival in the cold. Its extraction is very complicated.',
+'Elnaxanthine':'A mineral found in the local ice. An essential nutrient for survival in the cold. Its extraction is very complicated.',
 'Quota':'Minimum volume of Elnaxanthine a team needs to harvest in a given expedition. If the quota is not met, exile is imminent.',
+'Eolyusion': 'The spot where exiles are taken to.',
+'Heda and Wren': 'Two other children that used to live at the orphanage. They signed up for the Elanxanthine expedition and failed to meet the quota.',
+'Seolforstan': 'The only place you and your friends have ever known.'
 }
 
 #template: {a=glossary:Elnaxanthine}⫶🔻 Elnaxanthine{/a}
@@ -94,7 +97,7 @@ label ch1_01a_keep_mining:
     show wynfled angry
     w "Well, the quota's STUPID."
     show wynfled thinking
-    w "Come to think of it, I haven't seen Heda and Wren since they were sent to Eolyusion."
+    w "Come to think of it, I haven't seen {a=glossary:Heda and Wren}⫶🔻 Heda and Wren{/a} since they were sent to {a=glossary:Eolyusion}⫶🔻 Eolyusion.{/a}"
     show osric normal
     menu:
         "They're never coming back. Don't you get it? It's permanent.":
@@ -695,7 +698,7 @@ label ch1_con01a1a1_dismiss_punishment:
     menu:
         "But nobody survives alone. Especially not outside of Seolforstan.":
             show wynfled sad
-            w "But that would mean Heda and Wren..."
+            w "But that would mean {a=glossary:Heda and Wren}⫶🔻 Heda and Wren{/a}..."
             "You remain silent."
             show osric normal
             "Os shuffles his feet."

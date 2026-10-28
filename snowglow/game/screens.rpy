@@ -1634,11 +1634,15 @@ style slider_slider:
 
 style glossary_style:
     spacing 10
-    xalign 0.90 yalign 0.56
 
 screen glossary(target, x, y):
     button background None action Hide("glossary")
-    vbox:
+      
+    frame:
+        background "#051237" 
+        xalign 0.90 yalign 0.53
+        xpadding 30 ypadding 30
+        has vbox
         style "glossary_style"
         xmaximum 700
         box_wrap True
