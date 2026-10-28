@@ -1,5 +1,7 @@
 {Hrimhart} As a child at an orphanage, Seolforstan, you're off on another dangerous mining expedition in the icy tundras. But some things this time don't add up fully. Do you uncover the truth or continue to be quelled by lies? [A visual novel coded on Ren'py.] -> Original art and music.
 
+DEMO LINK: [https://vchen-bit.itch.io/snowglow]
+
 Main menu preview:
 <img width="1920" height="1080" alt="main_menu" src="https://github.com/user-attachments/assets/79d89abd-01ff-4f25-b2b9-01176fe6d820" />
 

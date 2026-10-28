@@ -9,7 +9,7 @@ init python:
 
     config.hyperlink_handlers["glossary"] = glossary_handler
 
-screen glossary(target, x, y): # deleted styling elements but feel free to add them back
+define past_code = """screen glossary(target, x, y): # deleted styling elements but feel free to add them back
     zorder 250
     button background None action Hide("glossary")
     vbox:
@@ -19,16 +19,28 @@ screen glossary(target, x, y): # deleted styling elements but feel free to add t
             xmaximum 400
             has vbox
             label target
-            text glossary_dict[target]
+            text glossary_dict[target]"""
     #TODO: make the glossary screen more aesthetic
+
+screen glossary(target, x, y):
+    zorder 250
+    button background None action Hide("glossary")
+    vbox:
+        xalign 0.90 yalign 0.56
+        frame:
+            xmaximum 700
+            has vbox
+            label target
+            text glossary_dict[target]
+
 
 #TODO: make a quick branch explaining the bug where stuff loops that unfinished branches jump to
 
 default glossary_dict = {
-"West-Iyrie":"The most widely held religion in the world, originated in Thalizac, Promland. Believing in the unity of the binary gods Andinomie, and their angels, Ychsympal. Due to historical reasons, however, it's not as popular in Promland, except in Thalizac.",
-"Elnaxanthine":"A mineral found in the local ice. Needed for survival in the cold. Its extraction is very complicated.",
-"Quota":"Minimum volume of Elnaxanthine a team needs to harvest in a given expedition. If the quota is not met, exile is imminent."
+'Elnaxanthine':'A mineral found in the local ice. Needed for survival in the cold. Its extraction is very complicated.',
+'Quota':'Minimum volume of Elnaxanthine a team needs to harvest in a given expedition. If the quota is not met, exile is imminent.',
 }
+
 #TODO: fix KeyError glossary bug
 
 #template: {a=glossary:Elnaxanthine}⫶🔻 Elnaxanthine{/a}
@@ -82,6 +94,7 @@ label start:#MC mining ice with team
             nickname = "Mare"
 
     show wynfled normal at right
+    mc "[glossary_dict['Quota']]"
     "This is Wynn (Wynfled). She's your best friend."
     hide wynfled
     show osric normal at left
