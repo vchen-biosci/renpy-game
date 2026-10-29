@@ -2,13 +2,17 @@ init python:
     location_gallery = Gallery()
     location_gallery.transition = fade
 
-    location_gallery.button("test_a")
-    location_gallery.image("death 1")
+    location_gallery.button("mining_site")
+    location_gallery.image("images/bg/mining site.png")
+    location_gallery.button("wider_ismere")
+    location_gallery.image("images/bg/wider ismere.png")
+    location_gallery.button("ismere_sky")
+    location_gallery.image("images/bg/death 1.png")
 
 
 screen gallery():
     tag menu
-    add "death 1.png"
+    add "images/gallery images/gallery_bg.png"
     frame:
         xalign 0.5
         yalign 1.0
@@ -22,11 +26,21 @@ screen gallery():
         yalign 0.5
         spacing 20
         if page == 1:
-            text "You are on page 1"
-            grid 1 1:
-                spacing 10
+            grid 2 2:
+                spacing 50
                 vbox:
-                    add location_gallery.make_button(name="test_a", unlocked="images/bg/wider ismere.png")
+                    add location_gallery.make_button(name="mining_site", unlocked="images/gallery images/mining_site.png")
+                    text "1: Mining Site"
+                vbox:
+                    add location_gallery.make_button(name="wider_ismere", unlocked="images/gallery images/wider_ismere.png")
+                    text "2: Wider Ismere"
+                vbox:
+                    add location_gallery.make_button(name="ismere_sky", unlocked="images/gallery images/ismere_sky.png")
+                    text "3: Ismere's Sky"
+                vbox:
+                    add location_gallery.make_button(name="mining_site", unlocked="images/gallery images/mining_site.png")
+                    text "1: Mining site"
+                    
         else:
             text "You are on page 2"
 

@@ -243,7 +243,7 @@ label ch1_01a1a2a1b_let_wynn_go:
     "You continue the conversation, pretending you saw nothing."
     mc "Nah, it's all thanks to our hard work, definitely!"
     "You tip the red powder evenly and carefully."
-    mc "Wynn does have a point though. Seolforstan really is a prison, hm?"
+    mc "Wynn does have a point though. {a=glossary:Seolforstan}⫶🔻 Seolforstan{/a} really is a prison, hm?"
     show osric normal
     o "What would the alternative be? Dying out in the cold?"
     mc "I suppose. We're lucky, you're right."
@@ -337,7 +337,36 @@ label ch1_01a1a2a1b2_wait_it_out:
     show osric sad
     mc "Well, there's real professionals that've been at it for years."
     "Osric sighs."
-    #TODO: work on this branch
+    "You sit side by side as you watch the snow swirl down in billows from the sky."
+    "The truth is that such expeditions are dangerous."
+    "This journey could very well be your last."
+    "You let your gaze fall and eyelids droop."
+    o "[nickname]?"
+    o "... They should rest anyways."
+    w "Hey! You guys did so much!" with vpunch
+    show osric surprised
+    o "Wynn?"
+    show wynfled happy
+    show osric happy
+    w "Me in the flesh! You all forgot about me, huh?"
+    o "Os shoots you a glance, in disbelief that she genuinely believes you didn't notice her leaving."
+    o "Nevertheless, you see relief in his gaze. You feel it too."
+    mc "Are you proud of us?? Look!"
+    show wynfled laughing
+    w "Course! I'm just sad I couldn't contribute a bit more..."
+    mc "..."
+    o "..."
+    w "Guys?"
+    mc "It's late. Nightcumb'll be here soon - should we pile the ice up now?"
+    o "Good idea."
+    w "I- I can help with this!"
+    o "You shouldn't."
+    mc "It's fine; she doesn't need to take her mitts off for this one."
+    mc "Besides, she... she wants to."
+    jump ch1_01a1a2a1b2a
+
+label ch1_01a1a2a1b2a:
+    pass
 
 
 label ch1_01a1a2a1a_confront_wynn:
@@ -386,7 +415,7 @@ label ch1_01a1a2a1a1_elna_sus:
     mc "I'd say we've worked quite hard today. What say you?"
     "You all stare at the heap of ice you've collected."
     show osric laughing
-    o "That's enough Elnaxan to keep Seolforstan fed for months!"
+    o "That's enough Elnaxan to keep {a=glossary:Seolforstan}⫶🔻 Seolforstan{/a} fed for months!"
     show wynfled thinking
     w "But what happens once we completely run out of Elnaxan near the orphanage?"
     mc "I guess we'd have to come out to wider Ismere more often, no?"
@@ -691,7 +720,18 @@ label ch1_01a1a1a1b_plot_during_quota:
             w "Well, do you have a plan? I don't."
             o "Damn it. Fine, let's head back then."
             jump ch1_01a1a1a1a_quota_check
-        ""
+        "Do you think we could persuade him to go easy on us?":
+            $ wynn_affec += 1
+            $ os_affec += 1
+            show wynfled thinking
+            w "What do you think, Os?"
+            show osric happy
+            o "Well, we can't go any lower. Might as well."
+            show wynfled surprised
+            w "But... how would we do it?"
+            show wynfled normal
+            mc "There's got to be something."
+
     
 
 label ch1_con1a_mention_punishment:
