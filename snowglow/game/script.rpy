@@ -13,11 +13,14 @@ init python:
 #TODO: make a quick branch explaining the bug where stuff loops that unfinished branches jump to
 
 default glossary_dict = {
-'Elnaxanthine':'A mineral found in the local ice. An essential nutrient for survival in the cold. Its extraction is very complicated.',
-'Quota':'Minimum volume of Elnaxanthine a team needs to harvest in a given expedition. If the quota is not met, exile is imminent.',
-'Eolyusion': 'The spot where exiles are taken to.',
-'Heda and Wren': 'Two other children that used to live at the orphanage. They signed up for the Elanxanthine expedition and failed to meet the quota.',
-'Seolforstan': 'The only place you and your friends have ever known.'
+"Elnaxanthine":"A mineral found in the local ice. An essential nutrient for survival in the cold. Its extraction is very complicated.",
+"Quota":"Minimum volume of Elnaxanthine a team needs to harvest in a given expedition. If the quota is not met, exile is imminent.",
+"Eolyusion": "The spot where exiles are taken to.",
+"Heda and Wren": "Two other children that used to live at the orphanage. They signed up for the Elanxanthine expedition and failed to meet the quota.",
+"Seolforstan": "An orphanage. The only place you and your friends have ever known.",
+"Hairkend": "A cloth attached to the ear that signals friendliness, with colours indicating personal details about the person. Unique to every individual.",
+"Nightcumb": "He is the manager for your expedition group, and will stay your manager for as long as you stay at Seolforstan.",
+"Elnaxan Award": "A legendary award allotted to the groups that mine the most Elnaxanthine each expedition.",
 }
     
 image ctc:
@@ -44,6 +47,18 @@ define gui.text_instance = "light"
 define gui.text_axis = {"width" : 125}
 define gui.text_size = 35
  
+
+label temp_end_message:
+    hide osric 
+    hide wynfled
+    hide nightcumb
+    "Hello! It's the author here."
+    "The storyline after this section hasn't been written yet. I'll be sending you back to the main menu."
+    "If you want to keep your progress, please navigate 'back' and save the story there."
+    "Once more is written you should be able to access the rest from there."
+    "Alright - bye!"
+    $ MainMenu(confirm=False)()
+
 
 label start:#MC mining ice with team
 
@@ -322,6 +337,7 @@ label ch1_01a1a2a1b1_search_for_wynn:
         "We're forgetting that it's dangerous out here.":
             show osric normal
             "Os purses his lips."
+    jump temp_end_message
     
 
 label ch1_01a1a2a1b2_wait_it_out:
@@ -330,7 +346,7 @@ label ch1_01a1a2a1b2_wait_it_out:
     "Some time passes before you pipe up again."
     mc "I'm tired. And... we've definitely mined enough."
     show osric happy
-    o "Hey, maybe we can win the Elnaxan Award if we keep going. Wouldn't that be cool, winning it in our first year?"
+    o "Hey, maybe we'll get the {a=glossary:Elnaxan Award}⫶🔻 Elnaxan Award{/a} if we keep going. Wouldn't that be cool, winning it in our first year?"
     mc "Haha! Keep deluding yourself!"
     show osric blushing 
     o "I was being serious!" with vpunch
@@ -342,10 +358,11 @@ label ch1_01a1a2a1b2_wait_it_out:
     "This journey could very well be your last."
     "You let your gaze fall and eyelids droop."
     o "[nickname]?"
-    o "... They should rest anyways."
+    o "...Nevermind. Get some rest then."
     w "Hey! You guys did so much!" with vpunch
     show osric surprised
     o "Wynn?"
+    "You snap back awake instantly as you catch a glimpse of her vibrant hair."
     show wynfled happy at left
     show osric happy at right
     w "Me in the flesh! You all forgot about me, huh?"
@@ -361,14 +378,57 @@ label ch1_01a1a2a1b2_wait_it_out:
     o "Good idea."
     w "I- I can help with this!"
     o "You shouldn't."
-    mc "It's fine; she doesn't need to take her mitts off to do this."
-    mc "Besides, she... she wants to."
-    "Wynn, Os and you pile ice together while the sun slowly moves across the sky."
-    jump ch1_01a1a2a1b2a
+    menu:
+        "It's fine; she doesn't need to take her mitts off to do this.":
+            $ wynn_affec += 2
+            $ os_affec -= 2
+            "Osric doesn't seem amused but sighs."
+            "You can tell Wynn appreciates you treating her as a fellow teammate."
+            mc "Besides, she... she wants to."
+            o "...Yeah."
+            "Wynn, Os and you pile ice together as the sun crawls across the sky."
+        "Yeah. Wynn, sit out again.":
+            $ wynn_affec -= 2
+            $ os_affec += 2
+            "Osric seems to appreciate your backup, while Wynn looks ashamed at her non-contribution."
+            show wynfled sad
+            w "But sitting out's boringgg!"
+            mc "Sorry, Wynn."
+            show wynfled normal
+            "Wynn watches desolately as you and Os pile up the ice."
+            "The sun creeps across the sky at a tortoise's pace."
+    "After a while, Wynn pipes up."
+    jump ch1_01a1a2a1b2a_nightcumb_comes
 
-label ch1_01a1a2a1b2a:
+
+label ch1_01a1a2a1b2a_nightcumb_comes:
     show wynfled scared
-    w "He'll be here soon."
+    w "Nightcumb'll be here soon."
+    show osric laughing
+    o "We've certainly met the quota. Don't be scared!"
+    w "Y-you can tell?"
+    mc "Wynn... you're quite bad at hiding things, y'know?"
+    show wynfled sad
+    w "It's just the way he hides his h{a=glossary:Hairkend}⫶🔻 hairkend{/a} behind his braid that scares me..."
+    show osric normal 
+    o "It throws me off too."
+    mc "I wonder why he does..."
+    w "I just know- AAAAAAAA!" with vpunch
+    show nightcumb normal
+    show osric surprised
+    show wynfled surprised
+    n "Hello, children!"
+    "You all try to hide your discomfort."
+    show osric normal
+    o "Hello, sir."
+    n "Colour me suprised! You've really harvested this much?"
+    o "Yes, sir."
+    n "Ha! Ha! Well, I'll still have to carry out the check."
+    show wynfled scared
+    w "The... the check... yeah..."
+    menu:
+        "Lean in close to Wynn":
+            pass
 
 
 label ch1_01a1a2a1a_confront_wynn:
@@ -396,12 +456,16 @@ label ch1_01a1a2a1a_confront_wynn:
     w "Thanks, guys."
     menu:
         "*Press her on where she was going*":
-            jump ch1_01a1a2a1a_confront_wynn_1
+            jump ch1_01a1a2a1a2_press_wynn
         "*Focus on making Wynn feel happy and seen*":
             show wynfled laughing
             $ wynn_affec += 5
             "Wynn looks happy. You feel your bond growing slightly stronger."
             jump ch1_01a1a2a1a1_elna_sus
+
+
+label ch1_01a1a2a1a2_press_wynn:
+    jump temp_end_message
 
 
 label ch1_01a1a2a1a1_elna_sus:
@@ -421,6 +485,7 @@ label ch1_01a1a2a1a1_elna_sus:
     show wynfled thinking
     w "But what happens once we completely run out of Elnaxan near the orphanage?"
     mc "I guess we'd have to come out to wider Ismere more often, no?"
+    jump temp_end_message
     #TODO: work on this branch
 
 
@@ -590,6 +655,7 @@ label ch1_01b1_explore:
     "Rended apart, then whole again."
     show osric happy
     o "Earth to [nickname]..."
+    jump temp_end_message
     #TODO: work on this branch
 
 
@@ -704,6 +770,7 @@ label ch1_01a1a1a1a_quota_check:
     n "Well then, I'll be off! Stay here and wait so that all groups  together, alright?"
     n "And make sure not to wander too far, alright?"
     hide nightcumb 
+    jump temp_end_message
 
 
 label ch1_01a1a1a1b_plot_during_quota:
@@ -733,6 +800,7 @@ label ch1_01a1a1a1b_plot_during_quota:
             w "But... how would we do it?"
             show wynfled normal
             mc "There's got to be something."
+    jump temp_end_message
 
     
 
