@@ -346,11 +346,11 @@ label ch1_01a1a2a1b2_wait_it_out:
     w "Hey! You guys did so much!" with vpunch
     show osric surprised
     o "Wynn?"
-    show wynfled happy
-    show osric happy
+    show wynfled happy at left
+    show osric happy at right
     w "Me in the flesh! You all forgot about me, huh?"
     o "Os shoots you a glance, in disbelief that she genuinely believes you didn't notice her leaving."
-    o "Nevertheless, you see relief in his gaze. You feel it too."
+    "Nevertheless, you see relief in his gaze. You feel it too."
     mc "Are you proud of us?? Look!"
     show wynfled laughing
     w "Course! I'm just sad I couldn't contribute a bit more..."
@@ -361,12 +361,14 @@ label ch1_01a1a2a1b2_wait_it_out:
     o "Good idea."
     w "I- I can help with this!"
     o "You shouldn't."
-    mc "It's fine; she doesn't need to take her mitts off for this one."
+    mc "It's fine; she doesn't need to take her mitts off to do this."
     mc "Besides, she... she wants to."
+    "Wynn, Os and you pile ice together while the sun slowly moves across the sky."
     jump ch1_01a1a2a1b2a
 
 label ch1_01a1a2a1b2a:
-    pass
+    show wynfled scared
+    w "He'll be here soon."
 
 
 label ch1_01a1a2a1a_confront_wynn:
@@ -669,7 +671,7 @@ label ch1_01a1a1a1_regret:
     o "That's up to the scientists to do. We don't have the privilege of knowing."
     show wynfled laughing
     show osric surprised
-    w "Hey, think we could bribe a scient-AAAAAAA!"
+    w "Hey, think we could bribe a scient-AAAAAAA!" with vpunch
     show nightcumb normal
     show wynfled scared
     show osric normal
