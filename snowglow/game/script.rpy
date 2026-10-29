@@ -16,7 +16,6 @@ init python:
         renpy.hide_screen("alert")
         renpy.restart_interaction()
 
-#TODO: make a quick branch explaining the bug where stuff loops that unfinished branches jump to
 
 default glossary_dict = {
 "Elnaxanthine":"A mineral found in the local ice. An essential nutrient for survival in the cold. Its extraction is very complicated.",
@@ -699,6 +698,7 @@ label ch1_01a1a1_play_to_night:
 
 
 label ch1_01a1a1a_wasted_day:
+    $ end_alert()
     show wynfled happy at left
     show osric laughing at right
     "*Time skip*"
@@ -835,6 +835,7 @@ label ch1_con1a_mention_punishment:
     
 
 label ch1_con01a1a1_dismiss_punishment:
+    $ end_alert()
     show osric normal
     "Os glances down at the pile too."
     o "Right, we might not meet the quota."

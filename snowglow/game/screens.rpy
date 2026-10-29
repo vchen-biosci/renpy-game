@@ -1656,15 +1656,11 @@ screen glossary(target):
 #just reusing the glossary code bc its easier
 image alert = Frame("gui/glossary_bg.png", Borders(20, 20, 20, 20))
 screen alert(message):
-
-    button background None 
-    imagemap:
-        ground "gui/glossary_bg.png" 
-        hotspot (143, 455, 639, 214):
-            action Hide("alert")
+    button background None #action Hide("alert")
       
     frame:
-     
+        
+        background "glossary_background"
         xalign 0.1 yalign 0.53
         xpadding 30 ypadding 30
         has vbox
@@ -1672,5 +1668,4 @@ screen alert(message):
         xmaximum 700
         box_wrap True
         text "[message]"
-        text "(Click on box to hide.)" size 22 
-        
+        #text "(Click to continue.)" size 22 
