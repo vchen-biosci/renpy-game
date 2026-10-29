@@ -29,20 +29,20 @@ screen gallery():
             grid 2 2:
                 spacing 50
                 vbox:
-                    add location_gallery.make_button(name="mining_site", unlocked="images/gallery images/mining_site.png")
-                    text "1: Mining Site"
+                    add location_gallery.make_button(name="mining_site", locked="images/gallery images/locked_image.png", unlocked="images/gallery images/mining_site.png")
+                    text "1: Mining Site" xalign 0.5
                 vbox:
-                    add location_gallery.make_button(name="wider_ismere", unlocked="images/gallery images/wider_ismere.png")
-                    text "2: Wider Ismere"
+                    add location_gallery.make_button(name="wider_ismere", locked="images/gallery images/locked_image.png", unlocked="images/gallery images/wider_ismere.png")
+                    text "2: Wider Ismere" xalign 0.5
                 vbox:
-                    add location_gallery.make_button(name="ismere_sky", unlocked="images/gallery images/ismere_sky.png")
-                    text "3: Ismere's Sky"
+                    add location_gallery.make_button(name="ismere_sky", locked="images/gallery images/locked_image.png", unlocked="images/gallery images/ismere_sky.png")
+                    text "3: Ismere's Sky" xalign 0.5
                 vbox:
-                    add location_gallery.make_button(name="mining_site", unlocked="images/gallery images/mining_site.png")
-                    text "1: Mining site"
+                    add location_gallery.make_button(name="mining_site", locked="images/gallery images/locked_image.png", unlocked="images/gallery images/locked_image.png")
+                    text "4: Placeholder" xalign 0.5
                     
         else:
-            text "You are on page 2"
+            text "You are on page 2."
 
     frame:
         xalign 1.0
