@@ -3,12 +3,18 @@
 #glossary code partial credit to philat on lemmasoft renai us forum
 init python:
     def glossary_handler(target):
-        x, y = renpy.get_mouse_pos()
-        renpy.show_screen("glossary", target, x, y)
+        renpy.show_screen("glossary", target)
         renpy.restart_interaction()
 
     config.hyperlink_handlers["glossary"] = glossary_handler
 
+    def alert(message):
+        renpy.show_screen("alert", message)
+        renpy.restart_interaction()
+    
+    def end_alert():
+        renpy.hide_screen("alert")
+        renpy.restart_interaction()
 
 #TODO: make a quick branch explaining the bug where stuff loops that unfinished branches jump to
 
@@ -21,6 +27,10 @@ default glossary_dict = {
 "Hairkend": "A cloth attached to the ear that signals friendliness, with colours indicating personal details about the person. Unique to every individual.",
 "Nightcumb": "He is the manager for your expedition group, and will stay your manager for as long as you stay at Seolforstan.",
 "Elnaxan Award": "A legendary award allotted to the groups that mine the most Elnaxanthine each expedition.",
+}
+
+default messages = {
+"Important choice": "Your next choice may greatly impact the future storyline.",
 }
     
 image ctc:
@@ -677,6 +687,7 @@ label ch1_01a1a1_play_to_night:
     show osric happy
     o "You serious?"
     show screen vignette()
+    $ alert(messages["Important choice"])
     "You grow slightly restless looking at the pile."
     "You really don't have enough ice to guarantee anything."
     hide screen vignette

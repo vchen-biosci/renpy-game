@@ -1635,11 +1635,9 @@ style slider_slider:
     xsize 900
             
 
-style glossary_style:
-    spacing 10
 
 image glossary_background = Frame("gui/glossary_bg.png", Borders(20, 20, 20, 20))
-screen glossary(target, x, y):
+screen glossary(target):
     button background None action Hide("glossary")
       
     frame:
@@ -1648,9 +1646,31 @@ screen glossary(target, x, y):
         xalign 0.90 yalign 0.53
         xpadding 30 ypadding 30
         has vbox
-        style "glossary_style"
+        spacing 10
         xmaximum 700
         box_wrap True
         label target
         text glossary_dict[target]
         text "(Click to continue.)" size 22 
+
+#just reusing the glossary code bc its easier
+image alert = Frame("gui/glossary_bg.png", Borders(20, 20, 20, 20))
+screen alert(message):
+
+    button background None 
+    imagemap:
+        ground "gui/glossary_bg.png" 
+        hotspot (143, 455, 639, 214):
+            action Hide("alert")
+      
+    frame:
+     
+        xalign 0.1 yalign 0.53
+        xpadding 30 ypadding 30
+        has vbox
+        spacing 10
+        xmaximum 700
+        box_wrap True
+        text "[message]"
+        text "(Click on box to hide.)" size 22 
+        
